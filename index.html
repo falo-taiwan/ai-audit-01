@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAAT / FALO Research Pack Index</title>
+  <meta name="description" content="TAAT / FALO Multi-AI DeepResearch governance research entry page for Cross-AI Governance Research.">
+  <meta name="author" content="TAAT x FALO">
+  <meta property="og:title" content="TAAT / FALO Research Pack Index">
+  <meta property="og:description" content="從 Multi-AI DeepResearch 到治理型收斂的研究入口頁。">
+  <meta property="og:type" content="website">
+  <style>
+    :root {
+      --ink: #10264f;
+      --muted: #5b6780;
+      --line: rgba(33, 65, 119, 0.16);
+      --blue: #174e9f;
+      --blue-2: #0d3b7c;
+      --green: #2d7b5b;
+      --amber: #ba6b12;
+      --rose: #b54855;
+      --paper: #fffdf8;
+      --wash-blue: rgba(46, 112, 190, 0.12);
+      --wash-green: rgba(84, 151, 116, 0.14);
+      --wash-amber: rgba(221, 157, 70, 0.16);
+      --shadow: 0 24px 70px rgba(18, 47, 91, 0.13);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.72;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(72, 128, 199, 0.14), transparent 30%),
+        radial-gradient(circle at 86% 2%, rgba(207, 140, 59, 0.15), transparent 28%),
+        linear-gradient(180deg, #f7fbff 0%, #fffdf8 44%, #f7faf4 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.38;
+      background-image:
+        linear-gradient(rgba(16, 38, 79, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(16, 38, 79, 0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(180deg, #000 0%, transparent 72%);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 44px;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 68vh;
+      display: grid;
+      align-items: end;
+      padding: 30px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 253, 248, 0.7)),
+        radial-gradient(circle at 18% 18%, rgba(49, 113, 198, 0.22), transparent 28%),
+        radial-gradient(circle at 78% 22%, rgba(225, 161, 77, 0.22), transparent 27%),
+        radial-gradient(circle at 70% 80%, rgba(65, 143, 106, 0.2), transparent 34%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 16px;
+      border: 1px solid rgba(16, 38, 79, 0.08);
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 28px;
+      align-items: end;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue-2);
+      font-size: 0.86rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(2.35rem, 7vw, 5.45rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      max-width: 740px;
+      margin: 18px 0 0;
+      color: #25385f;
+      font-size: clamp(1.02rem, 1.5vw, 1.3rem);
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid rgba(16, 38, 79, 0.16);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(8px);
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(16, 38, 79, 0.1);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .meta-row:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .meta-row strong {
+      color: var(--ink);
+      text-align: right;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 28px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border: 1px solid rgba(16, 38, 79, 0.13);
+      border-radius: 999px;
+      color: var(--blue-2);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.68);
+    }
+
+    section {
+      margin-top: 24px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 12px 34px rgba(18, 47, 91, 0.06);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      max-width: 520px;
+      margin: 4px 0 0;
+      color: var(--muted);
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .flow-step {
+      position: relative;
+      min-height: 176px;
+      padding: 16px;
+      border: 1px solid rgba(16, 38, 79, 0.16);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(247, 251, 255, 0.8));
+    }
+
+    .flow-step::after {
+      content: "→";
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      transform: translateY(-50%);
+      color: rgba(16, 38, 79, 0.42);
+      font-weight: 900;
+      font-size: 1.35rem;
+    }
+
+    .flow-step:last-child::after {
+      content: "";
+    }
+
+    .num {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      color: #fff;
+      font-weight: 900;
+      background: var(--blue);
+    }
+
+    .flow-step:nth-child(2) .num,
+    .flow-step:nth-child(5) .num {
+      background: var(--green);
+    }
+
+    .flow-step:nth-child(3) .num {
+      background: #6b45a6;
+    }
+
+    .flow-step:nth-child(4) .num {
+      background: var(--amber);
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+      line-height: 1.26;
+      letter-spacing: 0;
+    }
+
+    .flow-step p,
+    .doc-card p,
+    .principle p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .file-link {
+      display: block;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(16, 38, 79, 0.1);
+      color: var(--blue-2);
+      font-size: 0.82rem;
+      font-weight: 800;
+      line-height: 1.45;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .figure-card {
+      margin: 0;
+      padding: 14px;
+      border: 1px solid rgba(16, 38, 79, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .figure-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid rgba(16, 38, 79, 0.11);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .figure-card figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .prompt-original {
+      margin-top: 18px;
+      border: 1px solid rgba(16, 38, 79, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+      overflow: hidden;
+    }
+
+    .prompt-original summary {
+      cursor: pointer;
+      padding: 15px 18px;
+      color: var(--blue-2);
+      font-weight: 900;
+      background: rgba(23, 78, 159, 0.08);
+    }
+
+    .prompt-original pre {
+      margin: 0;
+      padding: 18px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      color: #24375e;
+      font-family: inherit;
+      font-size: 0.95rem;
+      line-height: 1.72;
+    }
+
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .doc-card {
+      min-height: 208px;
+      padding: 18px;
+      border: 1px solid rgba(16, 38, 79, 0.16);
+      border-radius: var(--radius);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(246, 250, 255, 0.76));
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--blue-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      background: rgba(23, 78, 159, 0.1);
+    }
+
+    .doc-card:nth-child(2) .tag {
+      color: #276244;
+      background: rgba(45, 123, 91, 0.12);
+    }
+
+    .doc-card:nth-child(3) .tag {
+      color: #6a3f91;
+      background: rgba(106, 63, 145, 0.12);
+    }
+
+    .doc-card:nth-child(4) .tag {
+      color: #8a3a45;
+      background: rgba(181, 72, 85, 0.12);
+    }
+
+    .doc-card:nth-child(5) .tag {
+      color: #9a5410;
+      background: rgba(186, 107, 18, 0.13);
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .principle {
+      min-height: 152px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(16, 38, 79, 0.13);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .principle-icon {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 12px;
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg, rgba(23, 78, 159, 0.9), rgba(45, 123, 91, 0.78));
+      box-shadow: inset 0 0 0 7px rgba(255, 255, 255, 0.45);
+    }
+
+    .prompt-box {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .prompt-main {
+      padding: 22px;
+      border-radius: var(--radius);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(16, 38, 79, 0.94), rgba(23, 78, 159, 0.88)),
+        radial-gradient(circle at 88% 12%, rgba(255, 255, 255, 0.2), transparent 28%);
+    }
+
+    .prompt-main h3 {
+      font-size: 1.55rem;
+    }
+
+    .prompt-main p {
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .prompt-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .prompt-list li {
+      padding: 13px 14px;
+      border: 1px solid rgba(16, 38, 79, 0.14);
+      border-radius: var(--radius);
+      color: #26395f;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .map {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .watercolor-map {
+      min-height: 300px;
+      padding: 20px;
+      border: 1px solid rgba(16, 38, 79, 0.14);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 16% 18%, var(--wash-blue), transparent 28%),
+        radial-gradient(circle at 78% 30%, var(--wash-green), transparent 24%),
+        radial-gradient(circle at 58% 82%, var(--wash-amber), transparent 26%),
+        rgba(255, 255, 255, 0.65);
+    }
+
+    .lane {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: center;
+      margin: 0 0 13px;
+    }
+
+    .lane-label {
+      color: var(--blue-2);
+      font-weight: 900;
+    }
+
+    .lane-track {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 7px 10px;
+      border: 1px solid rgba(16, 38, 79, 0.15);
+      border-radius: 999px;
+      color: #26395f;
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.78);
+    }
+
+    .status-panel {
+      padding: 20px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(16, 38, 79, 0.14);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .status-panel ul {
+      margin: 12px 0 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      color: #4b3b22;
+      background: rgba(255, 248, 232, 0.76);
+    }
+
+    footer {
+      margin-top: 24px;
+      padding: 22px 24px;
+      border-radius: var(--radius);
+      color: rgba(255, 255, 255, 0.86);
+      background: linear-gradient(135deg, #0d2c62, #10264f);
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .prompt-box,
+      .map {
+        grid-template-columns: 1fr;
+      }
+
+      .flow,
+      .docs-grid,
+      .principles,
+      .visual-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flow-step::after {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 10px;
+      }
+
+      .hero,
+      section {
+        padding: 18px;
+      }
+
+      .flow,
+      .docs-grid,
+      .principles,
+      .visual-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .nav {
+        position: static;
+      }
+
+      .lane {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Research Entry Page / GitHub Pages Ready</p>
+          <h1>TAAT / FALO Research Pack Index</h1>
+          <p class="subtitle">從治理 Prompt、Multi-AI DeepResearch 到 Cross-AI Governance Consolidation 的研究入口。這不是最終 SOP，也不是 AI Audit Runtime，而是給夥伴快速理解研究脈絡的入口頁。</p>
+        </div>
+        <aside class="hero-meta" aria-label="research metadata">
+          <div class="meta-row"><span>日期</span><strong>2026 / 05 / 26</strong></div>
+          <div class="meta-row"><span>狀態</span><strong>Research Pack Index</strong></div>
+          <div class="meta-row"><span>Pilot Case</span><strong>工程承攬業銷售與收款循環</strong></div>
+          <div class="meta-row"><span>核心方法</span><strong>Cross-AI Governance Research</strong></div>
+        </aside>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="page sections">
+      <a href="#flow">目前流程</a>
+      <a href="#visuals">兩張流程圖</a>
+      <a href="#documents">五份研究文件</a>
+      <a href="#principles">治理原則</a>
+      <a href="#prompt">Prompt 說明</a>
+      <a href="#consolidation">收斂視角</a>
+    </nav>
+
+    <section id="flow">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Current Flow</p>
+          <h2>目前流程：從 Prompt 到治理收斂</h2>
+        </div>
+        <p class="section-note">這裡只呈現研究與治理收斂路徑，不展開 SOP 內容，也不進入 Runtime 化。</p>
+      </div>
+      <div class="flow">
+        <article class="flow-step">
+          <span class="num">1</span>
+          <h3>smf 建立治理 Prompt</h3>
+          <p>先定義角色、任務邊界、Pilot Case、輸出要求與「治理優先」的基本語言。</p>
+        </article>
+        <article class="flow-step">
+          <span class="num">2</span>
+          <h3>Multi-AI DeepResearch</h3>
+          <p>讓不同 AI Runtime 從各自角度研究 SOP、Computer Audit、ERP / Workflow 與台灣企業 reality。</p>
+        </article>
+        <article class="flow-step">
+          <span class="num">3</span>
+          <h3>收集五份研究文件</h3>
+          <p>保留 Claude、Google DeepResearch、ChatGPT、Grok、Perplexity 的不同治理語氣與文件哲學。</p>
+        </article>
+        <article class="flow-step">
+          <span class="num">4</span>
+          <h3>建立治理骨架</h3>
+          <p>先建立 AGENTS、README、context index 與資料夾結構，讓研究材料有可維護的落點。</p>
+        </article>
+        <article class="flow-step">
+          <span class="num">5</span>
+          <h3>準備 Cross-AI 收斂</h3>
+          <p>下一步不是選冠軍，而是比較治理風格、文件哲學、稽核深度與 Pilot Case 適配性。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="visuals">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Visual References</p>
+          <h2>兩張治理流程圖</h2>
+        </div>
+        <p class="section-note">這兩張圖用來幫 TAAT 夥伴快速理解目前研究方法與角色邊界，不代表已進入 Runtime 化。</p>
+      </div>
+      <div class="visual-grid">
+        <figure class="figure-card">
+          <img src="assets/TAAT_Multi-AI_DeepResearch_Governance_Consolidation_Flow.png" alt="TAAT Multi-AI DeepResearch to governance consolidation flow">
+          <figcaption>TAAT Multi-AI DeepResearch 到治理型收斂流程：從主控 Prompt、多 AI 研究、原始資料收集，到治理收斂與後續 Codex 結構化落地。</figcaption>
+        </figure>
+        <figure class="figure-card">
+          <img src="assets/TAAT_Project_Governance_Roles_for_Codex_sxf.png" alt="TAAT project governance roles for Codex sxf">
+          <figcaption>TAAT 專案治理架構與角色說明：ff、smf、sxf 的分工，以及目前「先治理、再導入、後擴充」的工作邊界。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="documents">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Research Sources</p>
+          <h2>五份 AI Runtime 研究文件</h2>
+        </div>
+        <p class="section-note">這些文件不是單純被摘要，而是作為 Cross-AI Governance Research 的素材來源。</p>
+      </div>
+      <div class="docs-grid">
+        <article class="doc-card">
+          <span class="tag">Claude</span>
+          <h3>架構型治理草案</h3>
+          <p>適合作為「主控文件 + 模組化章節」的架構參考，語氣偏顧問式、文件化、可維護。</p>
+          <a class="file-link" href="docs/01_research_raw/Claude_TAAT_SOP_Governance_Framework_v0.3.pdf">Claude_TAAT_SOP_Governance_Framework_v0.3.pdf</a>
+        </article>
+        <article class="doc-card">
+          <span class="tag">Google DeepResearch</span>
+          <h3>深度背景與制度脈絡</h3>
+          <p>適合補強台灣內控、工程承攬特性、Computer Audit 與制度論述的背景厚度。</p>
+          <a class="file-link" href="docs/01_research_raw/Google-DeepResearch_Engineering-Contracting_SOP_Governance_Framework.pdf">Google-DeepResearch_Engineering-Contracting_SOP_Governance_Framework.pdf</a>
+        </article>
+        <article class="doc-card">
+          <span class="tag">ChatGPT</span>
+          <h3>治理語言與收斂框架</h3>
+          <p>適合整理 Pilot Case 的治理定位、資料鏈、附件體系與後續可擴充方向。</p>
+          <a class="file-link" href="docs/01_research_raw/ChatGPT_Engineering-Contracting_Sales-and-Collection_Governance-SOP_Framework-Research.pdf">ChatGPT_Engineering-Contracting_Sales-and-Collection_Governance-SOP_Framework-Research.pdf</a>
+        </article>
+        <article class="doc-card">
+          <span class="tag">Grok</span>
+          <h3>簡潔可讀的入口骨架</h3>
+          <p>適合作為董事會、稽核室或夥伴快速理解的簡化版文件目錄與控制點提示。</p>
+          <a class="file-link" href="docs/01_research_raw/Grok_Engineering-Contracting_Sales-and-Collection_Governance-SOP.pdf">Grok_Engineering-Contracting_Sales-and-Collection_Governance-SOP.pdf</a>
+        </article>
+        <article class="doc-card">
+          <span class="tag">Perplexity</span>
+          <h3>模組與表單化整理</h3>
+          <p>適合補強 PRC / FM / SYS 命名、KCP 彙整、Computer Audit 切入點與導入階段。</p>
+          <a class="file-link" href="docs/01_research_raw/Perplexity_Engineering-Contracting_Sales-and-Collection_Level2-Level3_Governance-SOP_Framework.pdf">Perplexity_Engineering-Contracting_Sales-and-Collection_Level2-Level3_Governance-SOP_Framework.pdf</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="principles">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Governance First</p>
+          <h2>目前治理原則摘要</h2>
+        </div>
+        <p class="section-note">本頁保留方法論入口，不把研究包裝成已定案產品或全自動系統。</p>
+      </div>
+      <div class="principles">
+        <article class="principle">
+          <div class="principle-icon"></div>
+          <h3>治理優先</h3>
+          <p>先定義權責、流程、紀錄、控制點與稽核需求，再談工具。</p>
+        </article>
+        <article class="principle">
+          <div class="principle-icon"></div>
+          <h3>漸進導入</h3>
+          <p>內控 / SOP → Computer Audit → Workflow / ERP → Digital Auditability。</p>
+        </article>
+        <article class="principle">
+          <div class="principle-icon"></div>
+          <h3>不急著 AI Audit</h3>
+          <p>沒有穩定資料鏈與 Audit Trail 前，不直接跳到 AI 稽核。</p>
+        </article>
+        <article class="principle">
+          <div class="principle-icon"></div>
+          <h3>不急著 Agent 化</h3>
+          <p>AI 先做研究、整理、交叉檢核；決策與責任仍保留 HITL。</p>
+        </article>
+        <article class="principle">
+          <div class="principle-icon"></div>
+          <h3>文件即 Runtime</h3>
+          <p>文件不是靜態資料，而是承載流程、證據、表單與維運規則的治理介面。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="prompt">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Prompt Concept</p>
+          <h2>簡化版 Prompt 說明</h2>
+        </div>
+        <p class="section-note">本研究不是要求 AI 產生漂亮摘要，而是要求不同 AI 從治理角度互相補強。</p>
+      </div>
+      <div class="prompt-box">
+        <div class="prompt-main">
+          <h3>Cross-AI Governance Research</h3>
+          <p>同一個 Pilot Case，交給不同 AI Runtime 研究。重點不是哪份最好，而是觀察不同 AI 對治理、SOP、Computer Audit、ERP / Workflow 與台灣上市櫃 reality 的理解差異。</p>
+        </div>
+        <ul class="prompt-list">
+          <li>以工程承攬業銷售與收款循環作為 Pilot Case。</li>
+          <li>要求 AI 先處理治理、SOP、Computer Audit 與 ERP / Workflow，不直接跳 AI Audit。</li>
+          <li>比較不同 AI 的治理風格、文件哲學、控制點深度與長期維運性。</li>
+          <li>最後由 TAAT / FALO 收斂成可落地、可維護、可稽核的治理文件方向。</li>
+        </ul>
+      </div>
+      <details class="prompt-original">
+        <summary>展開原始治理 Prompt</summary>
+        <pre>角色定位
+你是一位：
+台灣上市櫃企業治理顧問
+董事會與內部稽核顧問
+Computer Audit 顧問
+ERP / Workflow 顧問
+SOP / 內控制度顧問
+工程承攬業流程治理顧問
+AI-assisted Governance 顧問
+
+熟悉：台灣上市櫃公司內控制度、公開發行公司內控與稽核環境、工程承攬業流程、財會與營運管理、ERP 與 Workflow、文件治理、Audit Trail、電腦稽核（Computer Audit）、SOP / ISO 文件架構。
+
+請以：可治理、可落地、可維運、可稽核、可長期維護、符合台灣企業 reality 為優先原則。
+
+特別治理原則（非常重要）
+請不要直接跳到：AI Audit、Agent Governance、AI-native Runtime、過度前沿 AI 架構。
+
+目前專案重點是：「先建立企業可接受的治理型 SOP 與 Computer Audit 基礎」
+
+導入順序應偏向：
+內控 / SOP → Computer Audit → Workflow / ERP → Digital Auditability → AI-assisted Governance → 未來才逐步延伸 AI Audit。
+
+請避免：AI buzzword、空泛 AI 顧問語言、不切實際的 AI 自動化幻想。
+
+使用者背景
+目前使用者為：台灣上市櫃公司董事會層級稽核主管。熟悉財務會計、營運管理、傳統稽核、電腦稽核、ERP、Workflow、SOP、內控制度，對主流 AI 有基礎認識。
+
+專案背景
+目前專案主題：「工程承攬業銷售與收款循環」。
+
+目的：
+建立集團重要目標單位之 SOP 示範案例、建立治理型流程文件、建立可維運的文件架構、建立未來可逐步延伸之 AI-assisted Governance 基礎。
+
+此案例：非全集團統一 SOP，為重要單位之 Pilot Case，強調可落地、可維護、可複製、可逐步擴充。
+
+文件治理原則
+請理解「台灣上市櫃內控制度」與「ISO 9000 文件體系」並非完全相同體系。請不要拘泥於教科書式 ISO 文件拆分。
+
+本專案採 Level 2 + Level 3 混合型治理文件概念。
+
+目的：
+降低文件碎片化、提高可維護性、提高企業落地性、提高實際使用率、保持治理需求、保持稽核需求、保持 Workflow 與 ERP 延伸性。文件治理優先於 ISO 教條形式。
+
+本次文件方向
+請優先建立「Level 2 + Level 3 混合型治理文件」。
+
+文件內容可同時包含：程序、SOP、權責、關鍵控制點、文件留存、ERP 流程、Workflow、Computer Audit 控制、Audit Trail、表單關聯、系統控制。不需要刻意完全拆分。
+
+必須考量的治理項目
+請特別考量：台灣上市櫃公司內控制度、工程承攬業特性、合約管理、工程估驗、請款流程、收款流程、保留款、驗收流程、異常管理、文件留存、ERP 權限、Workflow 流程、電腦稽核控制、Audit Trail、權責分工、跨部門協作。
+
+Computer Audit 重點
+請優先從 Computer Audit 角度思考。例如：ERP 權限控制、系統流程一致性、表單追溯、Log 留存、Workflow 狀態、文件版本、異常追蹤、電子簽核、收款與請款 cross-check、ERP 與文件一致性。而不是直接跳 AI Audit。
+
+輸出要求
+請先：
+1. 建議整體文件架構
+2. 建議 Level 2 + Level 3 混合文件目錄
+3. 說明各章節目的
+4. 標示關鍵控制點（KCP）
+5. 標示 Computer Audit 可切入位置
+6. 標示 ERP / Workflow 關聯
+7. 標示文件與表單關聯
+
+請不要一次產出超長完整 SOP。請優先：架構、治理、可維運性、模組化、台灣企業實務。</pre>
+      </details>
+    </section>
+
+    <section id="consolidation">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Governance Consolidation</p>
+          <h2>目前收斂視角</h2>
+        </div>
+        <p class="section-note">這是研究入口頁的狀態說明：下一步才會進入 AI_COMPARISON 與 GOVERNANCE_SYNTHESIS。</p>
+      </div>
+      <div class="map">
+        <div class="watercolor-map" aria-label="governance consolidation map">
+          <div class="lane">
+            <div class="lane-label">研究層</div>
+            <div class="lane-track">
+              <span class="pill">Claude</span>
+              <span class="pill">Google</span>
+              <span class="pill">ChatGPT</span>
+              <span class="pill">Grok</span>
+              <span class="pill">Perplexity</span>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-label">收斂層</div>
+            <div class="lane-track">
+              <span class="pill">去幻覺</span>
+              <span class="pill">去理想化</span>
+              <span class="pill">交叉比對</span>
+              <span class="pill">結構化</span>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-label">治理層</div>
+            <div class="lane-track">
+              <span class="pill">SOP</span>
+              <span class="pill">KCP</span>
+              <span class="pill">RACI</span>
+              <span class="pill">Computer Audit</span>
+              <span class="pill">ERP / Workflow</span>
+            </div>
+          </div>
+          <div class="lane">
+            <div class="lane-label">落地層</div>
+            <div class="lane-track">
+              <span class="pill">Research Pack</span>
+              <span class="pill">Governance Synthesis</span>
+              <span class="pill">可維護文件</span>
+            </div>
+          </div>
+        </div>
+        <aside class="status-panel">
+          <h3>目前不是在做什麼？</h3>
+          <ul>
+            <li>不是最終 SOP。</li>
+            <li>不是 AI Audit Runtime。</li>
+            <li>不是全自動 Agent 導入。</li>
+            <li>不是五份文件的排名。</li>
+          </ul>
+          <div class="note">
+            下一步才是正式的 Cross-AI Governance Consolidation：比較各 AI 的治理風格、文件哲學、Computer Audit 深度、ERP / Workflow 理解與 Pilot Case 適配性。
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <footer>
+      <strong>TAAT / FALO Research Pack Index</strong><br>
+      多 AI 研究 x 治理收斂 x 人機協作。先建立可治理、可落地、可維護、可稽核的研究入口，再逐步延伸為正式治理文件。
+    </footer>
+  </main>
+</body>
+</html>
