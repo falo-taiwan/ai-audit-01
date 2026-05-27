@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工程承攬業銷售與收款循環作業程序 S版 v0.1</title>
+  <meta name="description" content="台灣上市櫃公司常見傳統 SOP / 內控制度寫法示範，作為工程承攬業銷售與收款循環市場現況 baseline。">
+  <style>
+    :root {
+      --ink: #1f2a44;
+      --muted: #5f6878;
+      --line: #cfd6e2;
+      --line-dark: #8f9caf;
+      --paper: #ffffff;
+      --bg: #f2f4f7;
+      --head: #edf1f6;
+      --blue: #244a7c;
+      --seal: #6b7280;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.72;
+      background: var(--bg);
+    }
+    .page {
+      width: min(1060px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 44px;
+    }
+    .document {
+      border: 1px solid var(--line-dark);
+      background: var(--paper);
+      box-shadow: 0 12px 32px rgba(31, 42, 68, 0.10);
+    }
+    header {
+      padding: 28px 34px 20px;
+      border-bottom: 2px solid var(--line-dark);
+    }
+    .doc-label {
+      margin: 0 0 10px;
+      color: var(--seal);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 4.4vw, 48px);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .info-table {
+      width: 100%;
+      max-width: 100%;
+      margin-top: 22px;
+      border-collapse: collapse;
+      border: 1px solid var(--line-dark);
+      table-layout: fixed;
+      font-size: 15px;
+    }
+    .info-table th,
+    .info-table td {
+      padding: 9px 11px;
+      border: 1px solid var(--line-dark);
+      text-align: left;
+      vertical-align: top;
+    }
+    .info-table th {
+      width: 150px;
+      color: #263247;
+      background: var(--head);
+      font-weight: 800;
+    }
+    .info-table td {
+      overflow-wrap: anywhere;
+    }
+    .baseline-note {
+      margin-top: 16px;
+      padding: 13px 15px;
+      border: 1px solid #d6bd7a;
+      background: #fff9e8;
+      color: #654817;
+      font-weight: 700;
+    }
+    .flow-panel {
+      margin: 22px 34px 0;
+      border: 1px solid var(--line-dark);
+      background: #fff;
+      overflow-x: auto;
+    }
+    .flow-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      background: var(--head);
+      color: #2e3a50;
+      font-size: 15px;
+    }
+    .flow-title span {
+      font-weight: 800;
+    }
+    .flow-panel svg {
+      display: block;
+      min-width: 0;
+      width: 100%;
+      height: auto;
+    }
+    article {
+      padding: 26px 34px 34px;
+    }
+    h2 {
+      margin: 34px 0 13px;
+      padding: 9px 12px;
+      border-left: 6px solid var(--blue);
+      background: var(--head);
+      color: #1f2a44;
+      font-size: clamp(22px, 2.6vw, 29px);
+      line-height: 1.3;
+    }
+    h3 {
+      margin: 24px 0 8px;
+      color: #263247;
+      font-size: 20px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 4px;
+    }
+    p { margin: 10px 0; }
+    ul, ol { margin: 10px 0 14px; padding-left: 1.55rem; }
+    li { margin: 4px 0; }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 14px 0 18px;
+      border: 1px solid var(--line-dark);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      background: #fff;
+    }
+    th, td {
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: #263247;
+      background: #eef2f7;
+      font-weight: 800;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 14px 16px;
+      border: 1px solid var(--line-dark);
+      background: #f8fafc;
+      color: #1f2a44;
+      font-size: 15px;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    footer {
+      padding: 14px 34px 22px;
+      border-top: 1px solid var(--line-dark);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+      background: #fafbfc;
+    }
+    @media (max-width: 720px) {
+      .page { width: min(100% - 16px, 1060px); padding-top: 8px; }
+      header, article { padding-left: 18px; padding-right: 18px; }
+      .flow-panel { margin-left: 18px; margin-right: 18px; }
+      .flow-title { display: block; }
+      .info-table th { width: 112px; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="document">
+      <header>
+        <p class="doc-label">Sample Version / Traditional SOP Baseline</p>
+        <h1>工程承攬業銷售與收款循環作業程序 S版 v0.1</h1>
+        <p class="subtitle">台灣上市櫃公司常見的傳統 SOP / 內控制度寫法示範</p>
+        <table class="info-table" aria-label="文件資訊">
+          <tbody>
+            <tr><th>文件狀態</th><td>Sample Version / 市場現況 baseline</td></tr>
+            <tr><th>文件定位</th><td>傳統上市櫃治理 SOP 示範樣貌</td></tr>
+            <tr><th>適用範圍</th><td>工程承攬業銷售與收款循環</td></tr>
+            <tr><th>主要讀者</th><td>董事會、稽核室、財會、業務、工程、ERP 顧問與部門主管</td></tr>
+          </tbody>
+        </table>
+        <div class="baseline-note">本文件刻意保留一般上市櫃公司熟悉的內控制度感：流程、權責、表單、簽核與文件留存。</div>
+      </header>
+      
+      <section class="flow-panel" aria-label="傳統 SOP 流程圖">
+        <div class="flow-title">
+          <span>傳統 SOP 流程圖</span>
+          <strong>流程 -> 權責 -> 表單 -> 簽核 -> 留存</strong>
+        </div>
+        <svg viewBox="0 0 900 178" role="img" aria-labelledby="sample-flow-title">
+          <title id="sample-flow-title">傳統 SOP 流程圖</title>
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#58677d"/>
+            </marker>
+          </defs>
+          <rect x="10" y="18" width="880" height="142" rx="6" fill="#f8fafc" stroke="#d7dde7"/>
+          <g font-family="-apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif">
+            
+            <g transform="translate(95 92)">
+              <rect x="-58" y="-34" width="116" height="68" rx="4" fill="#ffffff" stroke="#8f9caf" stroke-width="1.4"/>
+              <text y="7" text-anchor="middle" font-size="24" font-weight="800" fill="#1f2a44">流程</text>
+            </g>
+            <g transform="translate(270 92)">
+              <rect x="-58" y="-34" width="116" height="68" rx="4" fill="#ffffff" stroke="#8f9caf" stroke-width="1.4"/>
+              <text y="7" text-anchor="middle" font-size="24" font-weight="800" fill="#1f2a44">權責</text>
+            </g>
+            <g transform="translate(445 92)">
+              <rect x="-58" y="-34" width="116" height="68" rx="4" fill="#ffffff" stroke="#8f9caf" stroke-width="1.4"/>
+              <text y="7" text-anchor="middle" font-size="24" font-weight="800" fill="#1f2a44">表單</text>
+            </g>
+            <g transform="translate(620 92)">
+              <rect x="-58" y="-34" width="116" height="68" rx="4" fill="#ffffff" stroke="#8f9caf" stroke-width="1.4"/>
+              <text y="7" text-anchor="middle" font-size="24" font-weight="800" fill="#1f2a44">簽核</text>
+            </g>
+            <g transform="translate(795 92)">
+              <rect x="-58" y="-34" width="116" height="68" rx="4" fill="#ffffff" stroke="#8f9caf" stroke-width="1.4"/>
+              <text y="7" text-anchor="middle" font-size="24" font-weight="800" fill="#1f2a44">留存</text>
+            </g>
+          </g>
+          <g stroke="#58677d" stroke-width="2.5" marker-end="url(#arrow)">
+            <line x1="157" y1="92" x2="200" y2="92"/><line x1="332" y1="92" x2="375" y2="92"/><line x1="507" y1="92" x2="550" y2="92"/><line x1="682" y1="92" x2="725" y2="92"/>
+          </g>
+          <text x="450" y="142" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif" font-size="16" fill="#5f6878">一般公司熟悉的 SOP 世界：先定程序，再定責任、表單、核准與保存。</text>
+        </svg>
+      </section>
+
+      <article>
+<h2>0. 文件聲明</h2>
+<p>本文件為傳統上市櫃治理 SOP 示範樣貌，用來呈現台灣企業目前常見的內控制度與作業程序文件寫法。</p>
+<p>本文件不是簡化版，也不是教學版，更不是錯誤版本。它代表的是市場主流現況：許多公司目前就是以這種方式描述流程、權責、核准、表單與文件留存。</p>
+<p>本文件：</p>
+<ul>
+<li>為傳統上市櫃治理 SOP 示範樣貌。</li>
+<li>非 TAAT Governance 進化版。</li>
+<li>非 Computer Audit 深度版。</li>
+<li>非 AI-assisted Governance 文件。</li>
+</ul>
+<p>本文件用途：</p>
+<ul>
+<li>作為「市場現況 baseline」。</li>
+<li>供後續與 A 版治理進化版及 B 版 Computer Audit 深度版對照。</li>
+<li>協助一般內稽、財會、ERP 顧問與主管辨識傳統 SOP 的既有樣貌。</li>
+</ul>
+<h2>1. 目的</h2>
+<p>為建立工程承攬業銷售與收款循環之標準作業程序，明確規範合約承接、合約變更、工程估驗、請款、收款、保留款、驗收及文件留存等作業，確保交易經適當核准、金額記錄正確、款項收取完整，並作為內部控制制度執行與稽核查核之依據。</p>
+<h2>2. 適用範圍</h2>
+<p>本程序適用於本公司工程承攬案件之銷售與收款循環，包含下列作業：</p>
+<ol>
+<li>客戶與案件基本資料建立。</li>
+<li>合約審查、簽訂與歸檔。</li>
+<li>合約變更及追加減作業。</li>
+<li>工程進度確認及估驗作業。</li>
+<li>請款、發票開立及應收帳款入帳。</li>
+<li>收款、沖帳及逾期帳款追蹤。</li>
+<li>保留款管理及釋放。</li>
+<li>驗收、結案及文件保存。</li>
+</ol>
+<h2>3. 作業依據</h2>
+<p>本程序依據下列文件與規範辦理：</p>
+<ul>
+<li>公司內部控制制度。</li>
+<li>銷售及收款循環相關管理辦法。</li>
+<li>授權核決權限表。</li>
+<li>合約管理辦法。</li>
+<li>應收帳款管理辦法。</li>
+<li>工程估驗與請款相關作業規範。</li>
+<li>會計制度及相關帳務處理規定。</li>
+<li>其他經公司核定之作業規章。</li>
+</ul>
+<h2>4. 名詞定義</h2>
+<div class="table-wrap"><table><thead><tr><th>名詞</th><th>說明</th></tr></thead><tbody><tr><td>工程承攬案件</td><td>公司接受業主委託，依合約內容提供工程施作、管理或相關服務之案件。</td></tr><tr><td>合約</td><td>經雙方簽署或公司核准之承攬契約、訂單、報價確認書或具約束力之交易文件。</td></tr><tr><td>合約變更</td><td>合約金額、工期、施工範圍、付款條件或其他重要內容之追加、減少或調整。</td></tr><tr><td>估驗</td><td>依工程進度、合約條件及實際完成情形，向業主確認可請款金額之作業。</td></tr><tr><td>請款</td><td>依合約、估驗結果或付款條件向業主提出收款請求之作業。</td></tr><tr><td>保留款</td><td>依合約約定於請款或收款時保留，待驗收、保固或其他條件成就後收回之款項。</td></tr><tr><td>驗收</td><td>工程完成後，由業主、監造或相關權責單位確認工程內容符合合約要求之程序。</td></tr></tbody></table></div>
+<h2>5. 權責單位</h2>
+<div class="table-wrap"><table><thead><tr><th>單位</th><th>主要權責</th></tr></thead><tbody><tr><td>業務單位</td><td>負責客戶接洽、報價、合約洽談、合約送審、請款資料協調及逾期款項催收。</td></tr><tr><td>工程單位</td><td>負責工程進度管理、施工資料提供、估驗資料編製、驗收資料整理及工程變更確認。</td></tr><tr><td>財會單位</td><td>負責請款資料審核、發票開立、應收帳款入帳、收款沖帳及帳齡追蹤。</td></tr><tr><td>法務或合約審查單位</td><td>負責重大合約條款、付款條件、保固、違約責任及法律風險審查。</td></tr><tr><td>權責主管</td><td>依核決權限核准合約、變更、估驗、請款、折讓、呆帳及其他例外事項。</td></tr><tr><td>稽核室</td><td>依年度稽核計畫或專案需求，查核本程序之遵循情形與內控制度有效性。</td></tr></tbody></table></div>
+<h2>6. 作業流程</h2>
+<p>傳統 SOP 作業流程如下：</p>
+<pre><code>案件建立
+  -&gt; 合約審查與簽訂
+  -&gt; 合約變更或追加減
+  -&gt; 工程進度確認
+  -&gt; 估驗申請與審核
+  -&gt; 請款及發票開立
+  -&gt; 收款與沖帳
+  -&gt; 保留款管理
+  -&gt; 驗收與結案
+  -&gt; 文件歸檔</code></pre>
+<h2>7. 作業程序</h2>
+<h3>7.1 案件建立</h3>
+<ol>
+<li>業務單位取得客戶需求或案件資料後，應建立案件基本資料。</li>
+<li>案件資料應包含客戶名稱、工程名稱、工程地點、預估金額、預估工期、付款條件及負責人員。</li>
+<li>新客戶或重大案件應依公司規定進行客戶資料審查或信用評估。</li>
+<li>案件建立後，應由權責主管審核案件承接之合理性。</li>
+</ol>
+<h3>7.2 合約審查與簽訂</h3>
+<ol>
+<li>業務單位應依報價、議價結果及業主需求編製合約草案或取得業主合約版本。</li>
+<li>合約內容應至少包含工程範圍、工程金額、付款條件、工期、驗收方式、保固、保留款、違約責任及爭議處理條款。</li>
+<li>重大合約或特殊條款應送法務或合約審查單位審閱。</li>
+<li>合約簽訂前，應依公司授權核決權限辦理核准。</li>
+<li>合約完成簽署後，業務單位應將正本或電子檔送交指定單位保管，並通知工程及財會單位辦理後續作業。</li>
+</ol>
+<h3>7.3 合約變更及追加減</h3>
+<ol>
+<li>工程執行期間，如發生施工範圍、金額、工期、付款條件或其他重要條件變動，應辦理合約變更或追加減作業。</li>
+<li>合約變更應載明變更原因、變更內容、金額影響、工期影響及相關附件。</li>
+<li>合約變更應經業務、工程、財會及權責主管審核後始得執行。</li>
+<li>未經核准之變更，不得作為估驗、請款或收入認列之依據。</li>
+<li>合約變更完成後，相關文件應併同原合約歸檔保存。</li>
+</ol>
+<h3>7.4 工程進度確認</h3>
+<ol>
+<li>工程單位應依施工進度、工程日報、現場紀錄或業主確認資料，定期確認工程完成情形。</li>
+<li>工程進度資料應能支持後續估驗及請款作業。</li>
+<li>如工程進度與合約約定有重大差異，工程單位應通知業務單位及權責主管處理。</li>
+<li>涉及追加、減少或爭議項目者，應依合約變更程序辦理。</li>
+</ol>
+<h3>7.5 估驗作業</h3>
+<ol>
+<li>工程單位應依合約約定、工程進度及可請款條件編製估驗資料。</li>
+<li>估驗資料應包含估驗期間、估驗項目、數量、金額、累計估驗金額及相關佐證。</li>
+<li>業務單位應協助確認業主估驗要求、請款時程及附件格式。</li>
+<li>估驗資料應送權責主管審核，必要時送財會單位檢核金額及合約條件。</li>
+<li>經核准之估驗資料，得作為後續請款依據。</li>
+</ol>
+<h3>7.6 請款及發票開立</h3>
+<ol>
+<li>業務單位或財會單位應依已核准之合約、估驗資料或付款條件提出請款。</li>
+<li>請款資料應包含合約編號、請款期別、請款金額、稅額、扣款、保留款及應收金額。</li>
+<li>財會單位應檢核請款金額與合約、估驗資料及付款條件是否相符。</li>
+<li>發票開立應依稅法及公司會計制度辦理。</li>
+<li>請款及發票資料完成後，應通知業務單位追蹤業主付款情形。</li>
+</ol>
+<h3>7.7 應收帳款及收款</h3>
+<ol>
+<li>財會單位應依請款及發票資料入帳應收帳款。</li>
+<li>收到款項時，財會單位應依銀行入帳資料、收款通知或相關憑證辦理沖帳。</li>
+<li>收款金額與應收帳款不符者，應查明原因並通知業務單位處理。</li>
+<li>業務單位應定期追蹤未收款項，必要時提出催收紀錄。</li>
+<li>逾期帳款應依公司規定提報權責主管，並評估後續處理方式。</li>
+</ol>
+<h3>7.8 保留款管理</h3>
+<ol>
+<li>財會單位應依合約條件記錄保留款金額及到期條件。</li>
+<li>業務單位及工程單位應追蹤保留款可請領時點。</li>
+<li>保留款請領應檢附驗收、保固或合約約定之必要文件。</li>
+<li>保留款收回後，財會單位應辦理沖帳並更新相關紀錄。</li>
+</ol>
+<h3>7.9 驗收及結案</h3>
+<ol>
+<li>工程完成後，工程單位應依合約及業主要求辦理驗收。</li>
+<li>驗收資料應包含完工資料、驗收紀錄、缺失改善紀錄及業主確認文件。</li>
+<li>如有驗收缺失，工程單位應追蹤改善並留存紀錄。</li>
+<li>案件結案前，應確認合約、變更、請款、收款、保留款及驗收文件是否完整。</li>
+<li>結案資料應依公司文件保存規定歸檔。</li>
+</ol>
+<h2>8. 控制重點</h2>
+<div class="table-wrap"><table><thead><tr><th>控制項目</th><th>控制說明</th><th>負責單位</th></tr></thead><tbody><tr><td>合約核准</td><td>合約簽訂前應依核決權限核准，重大條款應送相關單位審查。</td><td>業務 / 法務 / 權責主管</td></tr><tr><td>合約變更</td><td>合約變更或追加減應經正式核准，未核准變更不得請款。</td><td>業務 / 工程 / 權責主管</td></tr><tr><td>估驗依據</td><td>估驗應依合約、工程進度及相關佐證辦理。</td><td>工程 / 業務</td></tr><tr><td>請款審核</td><td>請款金額應與合約、估驗資料及付款條件相符。</td><td>財會 / 業務</td></tr><tr><td>收款沖帳</td><td>收款應依銀行入帳資料或收款憑證辦理沖帳。</td><td>財會</td></tr><tr><td>逾期追蹤</td><td>逾期帳款應定期追蹤並提報權責主管。</td><td>業務 / 財會</td></tr><tr><td>保留款</td><td>保留款應依合約條件記錄、追蹤及請領。</td><td>財會 / 業務</td></tr><tr><td>文件留存</td><td>合約、變更、估驗、請款、收款、驗收及結案資料應妥善保存。</td><td>各權責單位</td></tr></tbody></table></div>
+<h2>9. 使用表單</h2>
+<div class="table-wrap"><table><thead><tr><th>表單名稱</th><th>使用時點</th><th>保管單位</th></tr></thead><tbody><tr><td>客戶基本資料表</td><td>新客戶或案件建立時</td><td>業務單位</td></tr><tr><td>案件基本資料表</td><td>工程案件建立時</td><td>業務單位</td></tr><tr><td>合約審查表</td><td>合約簽訂前</td><td>業務單位</td></tr><tr><td>合約核准單</td><td>合約送核時</td><td>業務單位</td></tr><tr><td>合約變更申請單</td><td>合約變更或追加減時</td><td>業務 / 工程單位</td></tr><tr><td>工程估驗單</td><td>工程進度估驗時</td><td>工程單位</td></tr><tr><td>請款申請單</td><td>對業主請款時</td><td>業務 / 財會單位</td></tr><tr><td>發票開立申請單</td><td>開立發票時</td><td>財會單位</td></tr><tr><td>收款沖帳明細表</td><td>收款入帳時</td><td>財會單位</td></tr><tr><td>逾期帳款追蹤表</td><td>帳款逾期時</td><td>業務 / 財會單位</td></tr><tr><td>保留款明細表</td><td>保留款記錄及請領時</td><td>財會單位</td></tr><tr><td>驗收紀錄表</td><td>工程驗收時</td><td>工程單位</td></tr><tr><td>結案檢核表</td><td>案件結案時</td><td>工程 / 業務 / 財會單位</td></tr></tbody></table></div>
+<h2>10. 文件保存</h2>
+<ol>
+<li>合約、合約變更、估驗、請款、收款、保留款、驗收及結案資料，應依公司文件保存規定保存。</li>
+<li>紙本文件應由權責單位妥善保管；電子文件應存放於公司指定系統或資料夾。</li>
+<li>文件保存期間應依公司規定、法令要求及稽核需求辦理。</li>
+<li>文件調閱應依公司權限規範辦理。</li>
+</ol>
+<h2>11. 異常處理</h2>
+<p>下列情形應由承辦單位查明原因，必要時提報權責主管：</p>
+<ul>
+<li>合約尚未完成核准即開始執行。</li>
+<li>合約變更未完成核准即估驗或請款。</li>
+<li>請款金額與合約或估驗資料不符。</li>
+<li>收款金額與應收帳款不符。</li>
+<li>逾期帳款未依規定追蹤。</li>
+<li>保留款逾期未請領或未收回。</li>
+<li>驗收文件不完整。</li>
+<li>重要文件未依規定歸檔。</li>
+</ul>
+<p>異常事項應留存處理紀錄，包括發生原因、處理方式、責任單位、處理結果及核准紀錄。</p>
+<h2>12. 內部稽核</h2>
+<p>稽核室得依年度稽核計畫或專案需求，查核本程序執行情形。查核重點包括：</p>
+<ul>
+<li>合約是否依規定審查及核准。</li>
+<li>合約變更是否依程序辦理。</li>
+<li>估驗及請款是否有適當依據。</li>
+<li>應收帳款及收款沖帳是否正確。</li>
+<li>逾期帳款是否定期追蹤。</li>
+<li>保留款是否完整記錄及請領。</li>
+<li>文件是否依規定保存。</li>
+</ul>
+<p>稽核發現缺失時，應請權責單位提出改善措施並追蹤改善情形。</p>
+<h2>13. 修訂與施行</h2>
+<ol>
+<li>本程序之訂定、修訂及廢止，應依公司規定辦理。</li>
+<li>本程序經權責主管核准後施行，修訂時亦同。</li>
+<li>各單位應依本程序辦理相關作業，並配合稽核查核及改善。</li>
+</ol>
+<h2>14. 與後續版本之對照定位</h2>
+<p>本 S 版代表傳統上市櫃 SOP / 內控制度 reality。</p>
+<p>後續對照關係如下：</p>
+<div class="table-wrap"><table><thead><tr><th>版本</th><th>定位</th><th>主要差異</th></tr></thead><tbody><tr><td>S 版</td><td>傳統上市櫃 SOP / 內控制度 reality</td><td>以流程、權責、表單、核准及文件保存為主。</td></tr><tr><td>A 版</td><td>TAAT Governance 進化版</td><td>強化 Workflow、KCP、文件治理、可維運性及跨部門治理語言。</td></tr><tr><td>B 版</td><td>TAAT Computer Audit / AI-assisted 深化版</td><td>強化系統資料、Audit Trail、Log、Cross-check、Suspicious Timeline 與例外清單。</td></tr></tbody></table></div>
+<p>S 版的價值在於提供市場現況 baseline。只有先看懂一般公司現在的 SOP 長什麼樣子，後續才容易說明 A 版與 B 版到底進化在哪裡。</p>
+      </article>
+      <footer>市場現況 baseline · 傳統 SOP / 內控制度示範 · 用於後續與 A/B 版治理文件對照</footer>
+    </div>
+  </main>
+</body>
+</html>

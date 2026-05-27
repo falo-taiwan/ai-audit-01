@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工程承攬業銷售與收款循環治理作業辦法 v0.2</title>
+  <meta name="description" content="工程承攬業治理文件 responsive HTML version.">
+  <style>
+    :root {
+      --ink: #10264f;
+      --muted: #5f6e88;
+      --line: rgba(21, 53, 105, 0.15);
+      --blue: #174e9f;
+      --green: #2d7b5b;
+      --amber: #b66a14;
+      --paper: #fffdf8;
+      --soft: rgba(255, 255, 255, 0.82);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.76;
+      background:
+        radial-gradient(circle at 9% 4%, rgba(23, 78, 159, 0.14), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(182, 106, 20, 0.14), transparent 28%),
+        linear-gradient(180deg, #f7fbff 0%, var(--paper) 45%, #f7faf4 100%);
+    }
+    main {
+      width: min(1080px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+    .hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 24px 70px rgba(18, 47, 91, 0.12);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.4rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    .meta {
+      margin: 16px 0 0;
+      color: var(--muted);
+    }
+    article {
+      margin-top: 22px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+    h2 {
+      margin-top: 2.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(21, 53, 105, 0.12);
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      line-height: 1.2;
+    }
+    h3 { margin-top: 1.7rem; font-size: 1.25rem; }
+    h4, h5, h6 { margin-top: 1.4rem; }
+    p { margin: 0.85rem 0; }
+    ul, ol { padding-left: 1.35rem; }
+    li { margin: 0.25rem 0; }
+    blockquote {
+      margin: 1.2rem 0;
+      padding: 0.9rem 1rem;
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      background: rgba(255, 248, 232, 0.8);
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.2rem 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td {
+      padding: 0.72rem 0.82rem;
+      border-bottom: 1px solid rgba(21, 53, 105, 0.1);
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      color: #0f3674;
+      font-weight: 900;
+      background: rgba(23, 78, 159, 0.08);
+    }
+    code {
+      padding: 0.12rem 0.28rem;
+      border-radius: 5px;
+      background: rgba(23, 78, 159, 0.08);
+      color: #0f3674;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 1rem;
+      border-radius: var(--radius);
+      background: #10264f;
+      color: #f7fbff;
+    }
+    pre code { padding: 0; color: inherit; background: transparent; }
+    a { color: var(--blue); font-weight: 700; }
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      main { width: min(100% - 18px, 1080px); padding-top: 10px; }
+      .hero, article { padding: 18px; }
+      table { min-width: 640px; }
+    }
+
+    main {
+      overflow-x: clip;
+    }
+    .showcase-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.36fr);
+      gap: 22px;
+      align-items: stretch;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(247,251,255,0.82)),
+        radial-gradient(circle at 10% 10%, rgba(45,123,91,0.12), transparent 32%);
+      box-shadow: 0 24px 70px rgba(18, 47, 91, 0.12);
+    }
+    .showcase-hero h1 {
+      max-width: 820px;
+      font-size: clamp(2.05rem, 4.8vw, 4.1rem);
+    }
+    .lead {
+      max-width: 820px;
+      margin: 18px 0 0;
+      color: #314565;
+      font-size: clamp(1.05rem, 2vw, 1.32rem);
+      line-height: 1.72;
+    }
+    .hero-note {
+      display: flex;
+      min-height: 100%;
+      padding: 18px;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(23, 78, 159, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+    }
+    .hero-note strong {
+      color: var(--blue);
+      font-size: 1.08rem;
+    }
+    .hero-note p {
+      color: var(--muted);
+    }
+    .diagram-panel,
+    .focus-panel,
+    .doc-info-panel {
+      margin-top: 20px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.82);
+    }
+    .diagram-panel h2,
+    .focus-panel h2,
+    .doc-info-panel h2 {
+      margin: 0 0 14px;
+      padding: 0;
+      border: 0;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+    }
+    .svg-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 6px 2px 10px;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .flow-svg {
+      display: block;
+      width: 100%;
+      min-width: 860px;
+      height: auto;
+    }
+    .flow-box {
+      fill: rgba(255, 255, 255, 0.94);
+      stroke: rgba(23, 78, 159, 0.32);
+      stroke-width: 1.3;
+    }
+    .flow-box.alt {
+      stroke: rgba(45, 123, 91, 0.42);
+    }
+    .flow-label {
+      fill: #10264f;
+      font-size: 20px;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .flow-sub {
+      fill: #5f6e88;
+      font-size: 13px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .flow-arrow {
+      stroke: rgba(23, 78, 159, 0.55);
+      stroke-width: 2.4;
+      marker-end: url(#arrow);
+    }
+    .plain-summary {
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius);
+      color: #243a2f;
+      font-size: 1.08rem;
+      font-weight: 750;
+      background: rgba(236, 248, 241, 0.88);
+    }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .focus-card {
+      padding: 16px;
+      border: 1px solid rgba(21, 53, 105, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.78);
+    }
+    .focus-card h3 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 1.05rem;
+    }
+    .focus-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.62;
+    }
+    .doc-info-panel {
+      background: rgba(247, 251, 255, 0.72);
+    }
+    .doc-info-panel ul {
+      margin-bottom: 0;
+    }
+    article > h1:first-child {
+      display: none;
+    }
+    @media (max-width: 900px) {
+      .showcase-hero {
+        grid-template-columns: 1fr;
+      }
+      .focus-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .showcase-hero,
+      .diagram-panel,
+      .focus-panel,
+      .doc-info-panel {
+        padding: 18px;
+      }
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+      .flow-svg {
+        min-width: 760px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+
+    <header class="showcase-hero">
+      <div>
+        <p class="eyebrow">稽核主管個人工作稿 / v0.2</p>
+        <h1>工程承攬業銷售與收款循環治理作業辦法</h1>
+        <p class="lead">先把工程承攬業從合約到收款的治理流程講清楚，再銜接 Computer Audit。這一版是給主管、財會、工程與稽核一起討論的主文件。</p>
+      </div>
+      <aside class="hero-note">
+        <strong>主文件看什麼？</strong>
+        <p>看流程、責任、控制點與應留下的證據。技術檢查放到 Computer Audit 附加版。</p>
+      </aside>
+    </header>
+    <section class="diagram-panel" aria-labelledby="main-flow-title">
+      <h2 id="main-flow-title">從合約到收款的治理流程</h2>
+      <div class="svg-scroll">
+        <svg class="flow-svg" viewBox="0 0 1040 180" role="img" aria-label="合約到異常追蹤流程圖" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L8,3 z" fill="rgba(23, 78, 159, 0.6)" />
+            </marker>
+          </defs>
+          <rect x="20" y="46" width="100" height="62" rx="8" class="flow-box alt" />
+          <text x="70" y="77" class="flow-label">合約</text>
+          <line x1="125" y1="77" x2="142" y2="77" class="flow-arrow" />
+          <rect x="150" y="46" width="100" height="62" rx="8" class="flow-box" />
+          <text x="200" y="77" class="flow-label">變更</text>
+          <line x1="255" y1="77" x2="272" y2="77" class="flow-arrow" />
+          <rect x="280" y="46" width="100" height="62" rx="8" class="flow-box alt" />
+          <text x="330" y="77" class="flow-label">估驗</text>
+          <line x1="385" y1="77" x2="402" y2="77" class="flow-arrow" />
+          <rect x="410" y="46" width="100" height="62" rx="8" class="flow-box" />
+          <text x="460" y="77" class="flow-label">請款</text>
+          <line x1="515" y1="77" x2="532" y2="77" class="flow-arrow" />
+          <rect x="540" y="46" width="100" height="62" rx="8" class="flow-box alt" />
+          <text x="590" y="77" class="flow-label">收款</text>
+          <line x1="645" y1="77" x2="662" y2="77" class="flow-arrow" />
+          <rect x="670" y="46" width="100" height="62" rx="8" class="flow-box" />
+          <text x="720" y="77" class="flow-label">保留款</text>
+          <line x1="775" y1="77" x2="792" y2="77" class="flow-arrow" />
+          <rect x="800" y="46" width="100" height="62" rx="8" class="flow-box alt" />
+          <text x="850" y="77" class="flow-label">驗收</text>
+          <line x1="905" y1="77" x2="922" y2="77" class="flow-arrow" />
+          <rect x="930" y="46" width="100" height="62" rx="8" class="flow-box" />
+          <text x="980" y="68" class="flow-label">異常</text>
+          <text x="980" y="92" class="flow-sub">追蹤</text>
+        </svg>
+      </div>
+      <p class="plain-summary">這份文件先把工程承攬業從合約到收款的流程講清楚，讓主管、財會、工程與稽核能用同一套語言討論。</p>
+    </section>
+    <section class="focus-panel" aria-labelledby="main-focus-title">
+      <h2 id="main-focus-title">主管先看這四件事</h2>
+      <div class="focus-grid">
+        <article class="focus-card">
+          <h3>這個流程管什麼？</h3>
+          <p>管合約、變更、估驗、請款、收款、保留款、驗收與異常追蹤。</p>
+        </article>
+        <article class="focus-card">
+          <h3>哪些地方容易出事？</h3>
+          <p>先施工後補、超額估驗、無基礎請款、收款未沖帳、保留款提早釋放。</p>
+        </article>
+        <article class="focus-card">
+          <h3>誰要負責？</h3>
+          <p>業務、工程、財會、法務、資訊、內稽與管理階層各有邊界。</p>
+        </article>
+        <article class="focus-card">
+          <h3>需要留下什麼證據？</h3>
+          <p>合約、變更、估驗、請款、收款、驗收、異常處理與簽核紀錄。</p>
+        </article>
+      </div>
+    </section>
+
+    <article>
+
+<h2>0. 文件聲明</h2>
+<p>本文件不是全集團正式制度，不是最終版，也不是對外服務提案或資訊系統建置規格。</p>
+<p>本文件是供公司稽核主管個人使用與內部討論的治理型工作稿。其目的不是追求最完整 SOP，而是建立一份企業可接受、內稽可討論、財會與營運可落地的治理底稿。</p>
+<p>本版文件以傳統治理文件為主，重點放在：</p>
+<ul>
+<li>內部控制。</li>
+<li>SOP。</li>
+<li>流程。</li>
+<li>權責。</li>
+<li>關鍵控制點（KCP）。</li>
+<li>表單與紀錄。</li>
+<li>Workflow 基礎。</li>
+<li>文件留存與異常管理。</li>
+</ul>
+<p>Computer Audit、ERP Log、Audit Trail、SoD 技術矩陣與 Suspicious Timeline 深度內容，另整理於 Computer Audit 附加版本。這樣可以避免主文件過度技術化，也讓治理導入維持循序漸進。</p>
+<h2>1. 文件分層策略</h2>
+<p>本主題採一主一附的文件分層。</p>
+<div class="table-wrap"><table><thead><tr><th>版本</th><th>文件</th><th>定位</th><th>主要讀者</th></tr></thead><tbody><tr><td>A 版</td><td>傳統治理主文件</td><td>Level 2 + Level 3 混合型治理文件</td><td>董事會、內稽、財會、營運、工程主管</td></tr><tr><td>B 版</td><td>Computer Audit 附加版本</td><td>電腦稽核深度版</td><td>電腦稽核、資訊、ERP / Workflow 相關人員</td></tr></tbody></table></div>
+<p>兩份文件不是兩套制度。</p>
+<p>本文件負責企業可接受與可落地。CA 附加版負責把同一治理主題延伸到電腦稽核、資料追溯與系統留痕檢查。</p>
+<h2>2. 漸進導入原則</h2>
+<p>治理與電腦稽核導入必須循序漸進。</p>
+<pre><code>內控 / SOP
+  -&gt; Computer Audit
+  -&gt; Workflow / ERP
+  -&gt; 系統留痕與例外清單
+  -&gt; 管理追蹤與稽核覆核</code></pre>
+<p>目前階段停在：</p>
+<blockquote>傳統治理主文件 + Computer Audit 附加版本。</blockquote>
+<p>本階段不直接跳到：</p>
+<ul>
+<li>全自動稽核。</li>
+<li>系統自動核准。</li>
+<li>系統自動判斷。</li>
+<li>對外展示包裝。</li>
+</ul>
+<h2>3. 研究底稿與收斂原則</h2>
+<p>本文件參考多份研究底稿與工程承攬業治理觀點後整理而成，不以單一來源作為定稿依據。</p>
+<p>本版不在正文強調研究工具來源，避免文件讀起來像外部方法論展示。重點是讓稽核主管能直接拿來檢視流程、權責、控制點與證據鏈。</p>
+<p>收斂原則：</p>
+<ul>
+<li>主文件以傳統治理語言呈現。</li>
+<li>Computer Audit 深度內容不塞入主文件正文。</li>
+<li>不把文件包裝成對外服務或技術展示。</li>
+<li>保持台灣上市櫃企業 reality，避免過度 ISO 教條化或過度技術化。</li>
+</ul>
+<h2>4. 文件定位與治理邊界</h2>
+<h3>4.1 文件定位</h3>
+<p>本文件定位為：</p>
+<blockquote>工程承攬業銷售與收款循環之 Level 2 + Level 3 混合型治理主文件。</blockquote>
+<p>本文件同時承載：</p>
+<ul>
+<li>程序。</li>
+<li>SOP。</li>
+<li>權責。</li>
+<li>KCP。</li>
+<li>表單。</li>
+<li>基礎 Workflow。</li>
+<li>文件留存。</li>
+<li>異常與例外處理。</li>
+<li>管理監督。</li>
+</ul>
+<h3>4.2 與 L1 制度之關係</h3>
+<p>本文件不取代集團 L1 內控制度、銷售及收款循環政策或董事會已核准之正式制度。</p>
+<p>本文件屬於 Pilot Case：</p>
+<ul>
+<li>以重要目標單位為示範。</li>
+<li>以工程承攬業情境為特化。</li>
+<li>以 Level 2 + Level 3 混合文件作治理落地。</li>
+<li>後續經稽核主管與相關權責單位校閱後，再決定是否擴展為正式模板。</li>
+</ul>
+<h3>4.3 與 Computer Audit 附加版之關係</h3>
+<p>本文件只保留 Computer Audit 的治理接口，不展開 SQL、Log 欄位、系統勾稽規則或時序分析方法。</p>
+<p>相關細節統一移至 Computer Audit 附加版本。</p>
+<h2>5. 治理目標</h2>
+<p>本文件目標是建立工程承攬業銷售與收款循環的可治理基準。</p>
+<p>核心目標：</p>
+<ul>
+<li>確保合約、變更、估驗、請款、收款、驗收與保留款有一致流程。</li>
+<li>確保權責清楚，避免同一人執行不相容工作。</li>
+<li>確保關鍵控制點可被管理階層與內部稽核理解與抽核。</li>
+<li>確保表單、附件與簽核紀錄完整留存。</li>
+<li>確保 Workflow 可支撐基本授權、覆核與例外呈報。</li>
+<li>為後續 Computer Audit 與 ERP / Workflow 深化留下乾淨接口。</li>
+</ul>
+<p>本文件不追求：</p>
+<ul>
+<li>全自動稽核。</li>
+<li>系統自動決策。</li>
+<li>系統自動核准。</li>
+<li>一次寫完所有細部作業。</li>
+<li>以技術名詞取代治理責任。</li>
+</ul>
+<h2>6. 文件家族與附件治理</h2>
+<p>本文件採「一份主文件 + 受控附件 + CA 附加版」策略。</p>
+<p>主文件負責穩定治理骨架。附件負責可維護細節。CA 附加版負責技術深化與數位可稽核性。</p>
+<div class="table-wrap"><table><thead><tr><th>文件</th><th>定位</th><th>建議維護責任</th><th>內容</th></tr></thead><tbody><tr><td>主文件：工程承攬業銷售與收款循環治理作業辦法</td><td>Level 2 + Level 3 混合主體</td><td>內稽 / 財會 / 營運共同維護</td><td>目的、範圍、流程、權責、KCP、表單、Workflow 基礎</td></tr><tr><td>附件 A：流程圖與 RACI 矩陣</td><td>使用者導向附件</td><td>管理階層 / 流程 Owner</td><td>跨部門泳道、角色、交接點、替代機制</td></tr><tr><td>附件 B：KCP 控制矩陣</td><td>稽核與管理附件</td><td>內稽主管 / 財會主管 / 工程主管</td><td>控制目的、風險、責任、抽核方式、證據</td></tr><tr><td>附件 C：表單與佐證文件目錄</td><td>文件治理附件</td><td>文件管理權責單位</td><td>合約、變更、估驗、請款、驗收、收款、爭議與留存</td></tr><tr><td>附件 D：異常、逾期與爭議處理矩陣</td><td>營運風險附件</td><td>財會 / 法務 / 工程</td><td>異常碼、責任單位、升級時點、處置 SLA</td></tr><tr><td>CA 附加版</td><td>電腦稽核深度文件</td><td>內稽 / 資訊 / ERP Owner</td><td>ERP、Workflow、Audit Trail、Log、SoD、時序異常與例外清單</td></tr></tbody></table></div>
+<h2>7. 文件編號與模組架構</h2>
+<p>本文件採 SC（Sales &amp; Collection）作主循環代碼。</p>
+<div class="table-wrap"><table><thead><tr><th>類型</th><th>前綴</th><th>用途</th></tr></thead><tbody><tr><td>程序 / 主章節</td><td>SC-XX</td><td>銷售與收款循環主模組</td></tr><tr><td>關鍵控制點</td><td>KCP-SC-XX</td><td>管理與內稽可抽核之 Key Control Point</td></tr><tr><td>表單</td><td>FM-SC-XX</td><td>表單、範本、佐證文件</td></tr><tr><td>Workflow 控制</td><td>WF-SC-XX</td><td>基礎簽核、狀態與例外呈報</td></tr><tr><td>CA 附加規則</td><td>CA-SC-XX</td><td>僅於 Computer Audit 附加版展開</td></tr></tbody></table></div>
+<h2>8. 整體流程生命週期</h2>
+<p>工程承攬業銷售與收款循環不是單純「接單、開票、收款」。</p>
+<p>本 Pilot Case 採以下生命週期：</p>
+<pre><code>案件機會 / 得標
+  -&gt; 合約審查與案件建檔
+  -&gt; 契約變更與補充約定
+  -&gt; 工程進度與估驗基礎
+  -&gt; 工程估驗計價與營收認列
+  -&gt; 請款與發票管理
+  -&gt; 應收帳款與保留款管理
+  -&gt; 收款、沖帳與差異處理
+  -&gt; 驗收、結案與尾款釋放
+  -&gt; 異常、逾期與爭議處理
+  -&gt; 文件留存、監督與改善</code></pre>
+<p>主文件關注的是流程、權責、控制點與文件證據。跨系統勾稽與資料測試另由 CA 附加版處理。</p>
+<h2>9. 角色與職責</h2>
+<h3>9.1 基本 RACI</h3>
+<div class="table-wrap"><table><thead><tr><th>角色</th><th>主要責任</th><th>不應兼任</th></tr></thead><tbody><tr><td>業務 / 專案開發</td><td>合約條件、客戶溝通、案件啟動</td><td>收款沖帳、主檔權限維護</td></tr><tr><td>工程 / PM</td><td>進度確認、估驗基礎、驗收協調</td><td>發票開立、收款沖帳</td></tr><tr><td>財會</td><td>請款、發票、AR、收款、保留款、財報認列</td><td>合約條件單獨核准、工程進度單獨認定</td></tr><tr><td>法務</td><td>合約條款、變更、爭議與重大風險條款</td><td>ERP 主檔維護、收款沖帳</td></tr><tr><td>資訊 / ERP Owner</td><td>系統權限、Workflow 支援、報表支援</td><td>業務核准、估驗核准</td></tr><tr><td>內部稽核</td><td>控制設計評估、抽核、缺失追蹤</td><td>流程執行、交易核准</td></tr><tr><td>管理階層</td><td>授權、例外核准、監督改善</td><td>取代必要附件與證據鏈</td></tr></tbody></table></div>
+<h3>9.2 權責原則</h3>
+<ul>
+<li>流程執行人、覆核人與核准人應適度分離。</li>
+<li>估驗基礎不得只由單一角色自行認定。</li>
+<li>請款、收款與沖帳應分離。</li>
+<li>重大合約、重大變更、重大逾期與重大爭議應升級呈報。</li>
+<li>例外核准不得取代必要佐證文件。</li>
+</ul>
+<h2>10. SC-01 合約審查與案件建檔</h2>
+<h3>10.1 程序目的</h3>
+<p>確保工程承攬案件在啟動前，合約條件、付款里程碑、保留款、違約責任、變更條款、稅務條件與業主風險已完成跨部門審查。</p>
+<h3>10.2 治理要求</h3>
+<ul>
+<li>案件啟動前應完成合約審查。</li>
+<li>合約金額、付款條件、保留款比例、驗收條件、保固條件應明確。</li>
+<li>合約附件、圖說、BOQ、報價基礎應納入受控文件。</li>
+<li>合約核決權限應依金額、風險與條款重大性分層。</li>
+<li>未完成合約核准前，專案不得進入正式執行或請款流程。</li>
+</ul>
+<h3>10.3 Workflow 基礎</h3>
+<ul>
+<li>合約審查應至少經業務、工程、財會、法務及必要主管簽核。</li>
+<li>合約主檔建立應以已核准合約為依據。</li>
+<li>合約重大條款變更應重新送審。</li>
+</ul>
+<h3>10.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-01</td><td>合約金額與核決層級相符</td><td>避免未授權合約成立</td></tr><tr><td>KCP-SC-02</td><td>合約主檔與簽核本一致</td><td>避免系統或台帳與正式合約不一致</td></tr><tr><td>KCP-SC-03</td><td>合約付款條件完整</td><td>確保後續估驗、請款、保留款有依據</td></tr></tbody></table></div>
+<h3>10.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-01 合約審查表。</li>
+<li>FM-SC-02 案件啟動申請。</li>
+<li>FM-SC-03 合約主檔建立 / 異動申請。</li>
+<li>合約正本與附件。</li>
+<li>Workflow 簽核紀錄。</li>
+</ul>
+<h2>11. SC-02 工程估驗計價與營收認列</h2>
+<h3>11.1 程序目的</h3>
+<p>確保工程估驗具備實際進度證據、適當覆核與合約基礎，並使估驗、請款、營收認列與應收帳款可追溯。</p>
+<h3>11.2 治理要求</h3>
+<ul>
+<li>估驗需有工程進度依據、業主或監造確認、內部 PM / 工程主管覆核。</li>
+<li>估驗不得超過合約金額加已核准變更。</li>
+<li>完工百分比、估驗金額與營收認列基礎需一致。</li>
+<li>估驗文件需能支撐後續請款、發票與 AR。</li>
+<li>估驗例外應有原因、責任單位與核准紀錄。</li>
+</ul>
+<h3>11.3 Workflow 基礎</h3>
+<ul>
+<li>估驗申請應由 PM 或工程權責單位提出。</li>
+<li>財會應檢查估驗是否符合合約付款條件。</li>
+<li>估驗核准完成前，不得進入正式請款。</li>
+</ul>
+<h3>11.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-04</td><td>估驗數量經適當確認</td><td>避免單一人員認定進度</td></tr><tr><td>KCP-SC-05</td><td>累計估驗不超過合約 + 已核准變更</td><td>避免超額估驗</td></tr><tr><td>KCP-SC-06</td><td>估驗證據完整</td><td>確保估驗可被內稽與外部查核</td></tr></tbody></table></div>
+<h3>11.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-04 工程估驗申請單。</li>
+<li>FM-SC-05 工程進度確認紀錄。</li>
+<li>FM-SC-06 業主 / 監造確認書。</li>
+<li>工程照片與施工日報。</li>
+<li>營收認列底稿。</li>
+</ul>
+<h2>12. SC-03 契約變更與追加減帳</h2>
+<h3>12.1 程序目的</h3>
+<p>確保契約變更、追加減、暫估、工期調整與價金調整均經適當授權，且能回溯調整合約總價與估驗基礎。</p>
+<h3>12.2 治理要求</h3>
+<ul>
+<li>原則上變更應先核准後施工。</li>
+<li>若因特殊情況需先行施作，需建立受控暫估與例外核准機制。</li>
+<li>口頭變更不得直接進入正式估驗或請款。</li>
+<li>變更應有版本、原因、金額、工期與核准層級。</li>
+<li>變更影響合約價金、估驗、請款或工期時，應通知相關權責單位。</li>
+</ul>
+<h3>12.3 Workflow 基礎</h3>
+<ul>
+<li>變更申請應由工程 / PM 提出，並附原因、金額、工期及佐證。</li>
+<li>財會應確認變更對估驗、收入與應收帳款之影響。</li>
+<li>法務應審查重大條款與爭議風險。</li>
+<li>核准後才可更新合約有效總價。</li>
+</ul>
+<h3>12.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-07</td><td>變更先核准後施工</td><td>避免未授權施工進入收入循環</td></tr><tr><td>KCP-SC-08</td><td>變更回溯調整合約總價與估驗基礎</td><td>確保後續估驗不失準</td></tr><tr><td>KCP-SC-09</td><td>無口頭變更入帳</td><td>避免文件與實務兩本帳</td></tr></tbody></table></div>
+<h3>12.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-07 工程變更申請單。</li>
+<li>FM-SC-08 追加減明細表。</li>
+<li>FM-SC-09 變更核准紀錄。</li>
+<li>補充協議或業主確認文件。</li>
+</ul>
+<h2>13. SC-04 請款與發票管理</h2>
+<h3>13.1 程序目的</h3>
+<p>確保請款基於已核准估驗與合約付款條件，並使請款單、發票、AR 與估驗證據一致。</p>
+<h3>13.2 治理要求</h3>
+<ul>
+<li>請款不得早於估驗核准。</li>
+<li>請款金額不得超過已確認估驗可請款金額。</li>
+<li>發票應與請款單金額、稅額、專案代號一致。</li>
+<li>重複請款、孤立請款、未對應估驗之請款應列為例外。</li>
+<li>發票作廢、折讓或重開應有原因與核准紀錄。</li>
+</ul>
+<h3>13.3 Workflow 基礎</h3>
+<ul>
+<li>請款申請應連結估驗文件與合約付款條件。</li>
+<li>財會應覆核請款金額、稅額及發票資訊。</li>
+<li>請款核准後，才可產生正式應收帳款紀錄。</li>
+</ul>
+<h3>13.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-10</td><td>請款必須對應核准估驗</td><td>避免無基礎請款</td></tr><tr><td>KCP-SC-11</td><td>請款金額授權核准</td><td>避免超額或未授權請款</td></tr><tr><td>KCP-SC-12</td><td>請款文件三合一完整</td><td>確保請款單、估驗單、業主確認可勾稽</td></tr></tbody></table></div>
+<h3>13.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-10 請款申請單。</li>
+<li>FM-SC-11 請款檢核表。</li>
+<li>FM-SC-12 發票開立申請。</li>
+<li>發票清單。</li>
+</ul>
+<h2>14. SC-05 收款、沖帳與差異處理</h2>
+<h3>14.1 程序目的</h3>
+<p>確保收款及時入帳、正確沖帳，並對差異、扣款、折讓、票據、爭議款與未沖帳款項建立追蹤。</p>
+<h3>14.2 治理要求</h3>
+<ul>
+<li>收款應由財會依銀行入帳或票據資料確認。</li>
+<li>請款人不得自行執行收款沖帳。</li>
+<li>差異、扣款、折讓、短收應有核准與原因碼。</li>
+<li>逾期帳款應定期追蹤。</li>
+<li>重大逾期、重大差異或爭議款應升級呈報。</li>
+</ul>
+<h3>14.3 Workflow 基礎</h3>
+<ul>
+<li>收款確認與沖帳應留存銀行入帳或票據資料。</li>
+<li>折讓、扣款與短收應經適當層級核准。</li>
+<li>未配對收款應進入例外處理流程。</li>
+</ul>
+<h3>14.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-13</td><td>收款與應收帳款核銷一致</td><td>避免錯沖或挪用</td></tr><tr><td>KCP-SC-14</td><td>請款與收款職責分離</td><td>防止自行消滅應收</td></tr><tr><td>KCP-SC-15</td><td>逾期帳款管理</td><td>確保催收與備抵評估</td></tr></tbody></table></div>
+<h3>14.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-13 收款確認單。</li>
+<li>FM-SC-14 收款沖帳單。</li>
+<li>FM-SC-15 差異 / 折讓 / 扣款核准單。</li>
+<li>銀行入帳紀錄。</li>
+<li>AR Aging Report。</li>
+</ul>
+<h2>15. SC-06 應收帳款與保留款管理</h2>
+<h3>15.1 程序目的</h3>
+<p>確保正常應收、保留款、尾款、暫估款、爭議款分帳管理，避免狀態混淆造成追蹤失效。</p>
+<h3>15.2 治理要求</h3>
+<ul>
+<li>保留款比例與釋放條件應依合約設定。</li>
+<li>保留款應建立專案別台帳。</li>
+<li>到期未請領或未釋放保留款應定期報表追蹤。</li>
+<li>保留款釋放應與驗收、保固或合約條件連動。</li>
+<li>爭議款應與正常應收分開管理。</li>
+</ul>
+<h3>15.3 Workflow 基礎</h3>
+<ul>
+<li>保留款釋放需有驗收或合約條件成立證據。</li>
+<li>到期未請領、未釋放或爭議款應列入追蹤清單。</li>
+<li>重大保留款釋放應依核決權限簽核。</li>
+</ul>
+<h3>15.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-16</td><td>保留款比例符合合約</td><td>避免扣留不足或錯扣</td></tr><tr><td>KCP-SC-17</td><td>保留款台帳完整</td><td>避免到期漏請或漏釋放</td></tr><tr><td>KCP-SC-18</td><td>保留款釋放條件成立</td><td>避免未驗收或文件不足即釋放</td></tr></tbody></table></div>
+<h3>15.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-16 保留款台帳。</li>
+<li>FM-SC-17 保留款釋放申請。</li>
+<li>FM-SC-18 尾款追蹤表。</li>
+<li>驗收或保固相關文件。</li>
+</ul>
+<h2>16. SC-07 驗收、結案與保固管理</h2>
+<h3>16.1 程序目的</h3>
+<p>確保部分驗收、正式驗收、結案、保固啟動、尾款與保留款釋放具備完整文件與狀態連動。</p>
+<h3>16.2 治理要求</h3>
+<ul>
+<li>驗收需有業主、監造、內部工程或相關權責人員確認。</li>
+<li>缺失改善應列管至結案。</li>
+<li>未完成驗收不得釋放特定尾款或保留款，除非有例外核准。</li>
+<li>保固期應依合約啟動並追蹤。</li>
+</ul>
+<h3>16.3 Workflow 基礎</h3>
+<ul>
+<li>驗收申請應檢附驗收文件、缺失改善紀錄與業主確認。</li>
+<li>驗收狀態應通知財會，以便處理尾款與保留款。</li>
+<li>保固期、到期日與責任單位應建立追蹤。</li>
+</ul>
+<h3>16.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-19</td><td>驗收文件完整</td><td>確保結案依據</td></tr><tr><td>KCP-SC-20</td><td>驗收與保留款釋放連動</td><td>避免未驗收即釋放</td></tr><tr><td>KCP-SC-21</td><td>保固期建立</td><td>確保後續維修責任可追蹤</td></tr></tbody></table></div>
+<h3>16.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-19 驗收申請單。</li>
+<li>FM-SC-20 缺失改善追蹤表。</li>
+<li>FM-SC-21 保固書 / 保固台帳。</li>
+<li>結案證明。</li>
+</ul>
+<h2>17. SC-08 異常、逾期與爭議處理</h2>
+<h3>17.1 程序目的</h3>
+<p>確保客訴、施工爭議、請款退件、逾期款、扣款、品質爭議、法務升級與系統異常有統一異常碼、責任單位與追蹤機制。</p>
+<h3>17.2 治理要求</h3>
+<ul>
+<li>異常事件應建立責任單位、原因、金額、影響、預計處理日期。</li>
+<li>重大異常應依門檻升級至管理階層。</li>
+<li>爭議款應與正常應收分開管理。</li>
+<li>逾期未結案異常應定期呈報。</li>
+<li>異常結案需有佐證文件。</li>
+</ul>
+<h3>17.3 Workflow 基礎</h3>
+<ul>
+<li>異常事件應有唯一案件編號。</li>
+<li>異常案件應指定 Owner 與到期日。</li>
+<li>重大爭議應納入法務或管理階層審查。</li>
+</ul>
+<h3>17.4 KCP</h3>
+<div class="table-wrap"><table><thead><tr><th>KCP</th><th>控制點</th><th>控制目的</th></tr></thead><tbody><tr><td>KCP-SC-22</td><td>重大異常呈報門檻</td><td>避免重大風險未升級</td></tr><tr><td>KCP-SC-23</td><td>爭議款凍結或標示</td><td>避免誤認正常應收</td></tr><tr><td>KCP-SC-24</td><td>異常結案需證據</td><td>避免口頭結案</td></tr></tbody></table></div>
+<h3>17.5 表單與紀錄</h3>
+<ul>
+<li>FM-SC-22 異常事件紀錄單。</li>
+<li>FM-SC-23 異常呈報表。</li>
+<li>FM-SC-24 爭議處理紀錄。</li>
+<li>FM-SC-25 法務意見或會議紀錄。</li>
+</ul>
+<h2>18. 文件、表單與紀錄留存</h2>
+<h3>18.1 留存原則</h3>
+<p>所有關鍵文件、表單與 Workflow 紀錄應具備可追溯、可調閱、可封存、可稽核之保存規則。</p>
+<p>基本原則：</p>
+<ul>
+<li>文件應能對應專案、合約、變更、估驗、請款、收款與驗收。</li>
+<li>文件版本應可辨識，不得以未受控檔案取代正式紀錄。</li>
+<li>重大核准、例外核准與異常結案應保留簽核紀錄。</li>
+<li>留存年限依公司制度、法令與會計需求辦理。</li>
+</ul>
+<h3>18.2 表單清單</h3>
+<div class="table-wrap"><table><thead><tr><th>編號</th><th>表單 / 文件</th><th>對應模組</th><th>留存方式</th></tr></thead><tbody><tr><td>FM-SC-01</td><td>合約審查表</td><td>SC-01</td><td>DMS / Workflow</td></tr><tr><td>FM-SC-02</td><td>案件啟動申請</td><td>SC-01</td><td>Workflow</td></tr><tr><td>FM-SC-03</td><td>合約主檔建立 / 異動申請</td><td>SC-01</td><td>ERP / Workflow</td></tr><tr><td>FM-SC-04</td><td>工程估驗申請單</td><td>SC-02</td><td>ERP / Workflow</td></tr><tr><td>FM-SC-05</td><td>工程進度確認紀錄</td><td>SC-02</td><td>DMS / Workflow</td></tr><tr><td>FM-SC-06</td><td>業主 / 監造確認書</td><td>SC-02</td><td>DMS</td></tr><tr><td>FM-SC-07</td><td>工程變更申請單</td><td>SC-03</td><td>ERP / Workflow</td></tr><tr><td>FM-SC-08</td><td>追加減明細表</td><td>SC-03</td><td>DMS</td></tr><tr><td>FM-SC-09</td><td>變更核准紀錄</td><td>SC-03</td><td>Workflow</td></tr><tr><td>FM-SC-10</td><td>請款申請單</td><td>SC-04</td><td>ERP / Workflow</td></tr><tr><td>FM-SC-11</td><td>請款檢核表</td><td>SC-04</td><td>Workflow</td></tr><tr><td>FM-SC-12</td><td>發票開立申請</td><td>SC-04</td><td>ERP</td></tr><tr><td>FM-SC-13</td><td>收款確認單</td><td>SC-05</td><td>ERP</td></tr><tr><td>FM-SC-14</td><td>收款沖帳單</td><td>SC-05</td><td>ERP</td></tr><tr><td>FM-SC-15</td><td>差異 / 折讓 / 扣款核准單</td><td>SC-05</td><td>Workflow</td></tr><tr><td>FM-SC-16</td><td>保留款台帳</td><td>SC-06</td><td>ERP / DMS</td></tr><tr><td>FM-SC-17</td><td>保留款釋放申請</td><td>SC-06</td><td>Workflow</td></tr><tr><td>FM-SC-18</td><td>尾款追蹤表</td><td>SC-06</td><td>ERP / DMS</td></tr><tr><td>FM-SC-19</td><td>驗收申請單</td><td>SC-07</td><td>Workflow</td></tr><tr><td>FM-SC-20</td><td>缺失改善追蹤表</td><td>SC-07</td><td>DMS / Workflow</td></tr><tr><td>FM-SC-21</td><td>保固書 / 保固台帳</td><td>SC-07</td><td>DMS</td></tr><tr><td>FM-SC-22</td><td>異常事件紀錄單</td><td>SC-08</td><td>Workflow</td></tr><tr><td>FM-SC-23</td><td>異常呈報表</td><td>SC-08</td><td>Workflow</td></tr><tr><td>FM-SC-24</td><td>爭議處理紀錄</td><td>SC-08</td><td>DMS</td></tr></tbody></table></div>
+<h2>19. 管理監督與內稽抽核</h2>
+<h3>19.1 管理監督</h3>
+<p>管理階層應定期檢視：</p>
+<ul>
+<li>重大合約與重大變更。</li>
+<li>累計估驗與請款狀態。</li>
+<li>逾期應收帳款。</li>
+<li>保留款到期與釋放狀態。</li>
+<li>長期未結案異常與爭議。</li>
+<li>高金額例外核准案件。</li>
+</ul>
+<h3>19.2 內稽抽核</h3>
+<p>內部稽核可依風險選樣，檢查：</p>
+<ul>
+<li>合約核准是否完整。</li>
+<li>估驗是否有進度與業主 / 監造確認。</li>
+<li>請款是否對應核准估驗。</li>
+<li>收款沖帳是否正確。</li>
+<li>保留款釋放是否符合條件。</li>
+<li>重大異常是否依門檻呈報。</li>
+</ul>
+<p>電腦稽核測試、系統資料勾稽、Log 與異常時序分析，請參照 CA 附加版。</p>
+<h2>20. 常見 Red Flags（主文件版）</h2>
+<p>本章僅列管理層與內稽可快速理解的營運 Red Flags。技術型 Red Flags 另由 CA 附加版展開。</p>
+<div class="table-wrap"><table><thead><tr><th>Red Flag</th><th>風險意義</th><th>建議動作</th></tr></thead><tbody><tr><td>未核准合約即啟動專案</td><td>授權與執行斷裂</td><td>補查合約審查與案件建檔</td></tr><tr><td>估驗缺少進度或業主 / 監造確認</td><td>估驗基礎不足</td><td>要求補證據並追查責任</td></tr><tr><td>變更尚未核准即進入估驗或請款</td><td>先做後補風險</td><td>啟動例外審查</td></tr><tr><td>請款金額與估驗基礎不一致</td><td>可能超額或錯誤請款</td><td>財會覆核並暫停請款</td></tr><tr><td>收款長期未沖帳</td><td>AR 管理異常</td><td>追蹤銀行入帳與沖帳責任</td></tr><tr><td>保留款未達條件即釋放</td><td>合約權益受損</td><td>追查驗收與保固條件</td></tr><tr><td>異常長期未結案</td><td>管理監督失效</td><td>升級呈報</td></tr></tbody></table></div>
+<h2>21. 導入與維運路徑</h2>
+<p>建議導入順序：</p>
+<ol>
+<li>確認 Pilot Case 單位與適用範圍。</li>
+<li>確認本文件模組是否符合現行內控制度。</li>
+<li>確認 RACI 與核決權限。</li>
+<li>將 KCP 轉為抽核項目與管理報表。</li>
+<li>將表單與 Workflow 路徑整理成附件。</li>
+<li>再由 CA 附加版建立電腦稽核測試與資料勾稽規則。</li>
+</ol>
+<p>優先落地模組：</p>
+<div class="table-wrap"><table><thead><tr><th>優先順序</th><th>模組</th><th>理由</th></tr></thead><tbody><tr><td>1</td><td>SC-02 工程估驗計價與營收認列</td><td>財報重大性高，最能展示工程承攬治理特色</td></tr><tr><td>2</td><td>SC-04 請款與發票管理</td><td>直接影響 AR、收入與稅務</td></tr><tr><td>3</td><td>SC-06 應收帳款與保留款管理</td><td>工程承攬特色高，管理層容易理解</td></tr><tr><td>4</td><td>SC-03 契約變更</td><td>先做後補與未授權風險高</td></tr><tr><td>5</td><td>SC-08 異常、逾期與爭議</td><td>對接管理監督與缺失改善</td></tr></tbody></table></div>
+<h2>22. 稽核主管校閱待確認事項</h2>
+<p>本文件尚待公司稽核主管與相關權責單位校閱。至少需確認：</p>
+<ul>
+<li>Pilot Case 單位與適用範圍。</li>
+<li>是否需對應既有內控制度章節編號。</li>
+<li>RACI 是否符合現行組織與核決權限。</li>
+<li>KCP 是否足以支援董事會、內稽與管理層討論。</li>
+<li>表單清單是否需對應現行表單代號。</li>
+<li>Workflow 路徑是否符合現行系統或簽核習慣。</li>
+<li>哪些內容應留在主文件，哪些應移至附件或 CA 附加版。</li>
+</ul>
+<h2>23. 結語</h2>
+<p>本文件是工程承攬業銷售與收款循環的個人工作稿。</p>
+<p>它的價值不在於一次寫完所有技術細節，而在於先建立企業可接受、可討論、可維護、可稽核的治理底稿。</p>
+<p>Computer Audit 是後續延伸，不是取代本文件的起點。</p>
+    
+<section class="doc-info-panel" id="document-info">
+<h2>文件資訊</h2>
+<ul>
+<li>文件狀態：個人工作稿 / v0.2 Draft / 稽核主管校閱版</li>
+<li>文件定位：Level 2 + Level 3 混合型治理文件</li>
+<li>文件層級：A 版，傳統治理主文件</li>
+<li>主要讀者：公司稽核主管、內部稽核、財會、營運、工程主管、業務主管、流程 Owner</li>
+<li>適用場景：工程承攬業目標單位之銷售與收款循環治理整理</li>
+<li>對應附加文件：Computer Audit 附加版本</li>
+</ul>
+</section>
+</article>
+    <footer>個人工作稿，供內部治理討論與電腦稽核規劃使用。Markdown 便於版本控管，HTML 便於閱讀與展示。</footer>
+  </main>
+</body>
+</html>

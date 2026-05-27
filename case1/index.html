@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工程承攬業銷售與收款循環治理工作稿</title>
+  <meta name="description" content="供公司稽核主管個人使用的工程承攬業銷售與收款循環治理工作稿入口，聚焦內控、流程、權責、證據鏈與 Computer Audit。">
+  <style>
+    :root {
+      --ink: #17233f;
+      --muted: #5b6880;
+      --line: #dbe3ee;
+      --paper: #fffdf8;
+      --wash-blue: #eaf3fb;
+      --wash-green: #edf6ef;
+      --wash-amber: #fff6df;
+      --blue: #1f5f9f;
+      --green: #2f7652;
+      --amber: #a46416;
+      --shadow: 0 18px 45px rgba(23, 35, 63, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.72;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(116, 166, 205, 0.26), transparent 30%),
+        radial-gradient(circle at 84% 16%, rgba(157, 188, 145, 0.24), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, var(--paper) 46%, #f7f9fb 100%);
+    }
+
+    a { color: inherit; }
+
+    .page {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 48px;
+    }
+
+    .hero,
+    .section {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero {
+      padding: clamp(28px, 5vw, 56px);
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -8% -22% auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 999px;
+      background: rgba(245, 212, 145, 0.22);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 800px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.4vw, 23px);
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 38px;
+      padding: 7px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      color: #3d4d66;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: clamp(22px, 4vw, 36px);
+      border-radius: 14px;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .flow-wrap {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: linear-gradient(120deg, rgba(234, 243, 251, 0.9), rgba(255, 246, 223, 0.7));
+      overflow-x: auto;
+    }
+
+    .flow-wrap svg {
+      display: block;
+      min-width: 900px;
+      width: 100%;
+      height: auto;
+    }
+
+    .plain-note {
+      margin: 16px 0 0;
+      color: #40506a;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .docs-cards {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.74);
+      padding: 22px;
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 23px;
+      line-height: 1.28;
+    }
+
+    .card p {
+      margin: 12px 0 0;
+      color: var(--muted);
+    }
+
+    .card .role {
+      display: inline-flex;
+      margin-bottom: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #f3f6fa;
+      color: #314866;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .version-map {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .version-step {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.70);
+    }
+
+    .version-step strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #1f5f9f;
+      font-size: 18px;
+    }
+
+    .version-step span {
+      display: block;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 13px;
+      border: 1px solid rgba(31, 95, 159, 0.28);
+      border-radius: 8px;
+      background: #fff;
+      color: #174a83;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .link:hover {
+      border-color: rgba(31, 95, 159, 0.55);
+      background: #f3f8fe;
+    }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .principle {
+      min-height: 120px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .principle strong {
+      display: block;
+      color: var(--green);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .principle span {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .case {
+      background: linear-gradient(120deg, rgba(255, 246, 223, 0.92), rgba(237, 246, 239, 0.86));
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .guardrail {
+      padding: 22px;
+      border: 1px solid rgba(164, 100, 22, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .guardrail ul {
+      margin: 12px 0 0;
+      padding-left: 20px;
+      color: #42516b;
+    }
+
+    footer {
+      margin-top: 28px;
+      color: #6a7487;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(100% - 20px, 1160px); padding-top: 16px; }
+      .hero, .section { border-radius: 12px; }
+      .section-head, .case-grid, .cards, .docs-cards, .version-map, .principles { grid-template-columns: 1fr; }
+      .card, .principle, .guardrail { padding: 18px; }
+      .link { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <p class="eyebrow">Internal Audit Working Draft</p>
+      <h1>工程承攬業銷售與收款循環治理工作稿</h1>
+      <p class="lead">這是一個給公司稽核主管個人使用的文件入口。重點放在合約到收款的治理流程、權責分工、控制點、證據留存，以及可逐步銜接的 Computer Audit。</p>
+      <div class="meta">
+        <span class="pill">v0.2 Draft</span>
+        <span class="pill">個人工作稿</span>
+        <span class="pill">非正式制度</span>
+        <span class="pill">內控 / SOP / Workflow / ERP</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Main Flow</p>
+          <h2>先把流程講清楚</h2>
+        </div>
+        <p class="section-note">本頁不是對外服務頁，也不是系統建置規格；它先讓主管、財會、工程與稽核用同一套語言討論。</p>
+      </div>
+
+      <div class="flow-wrap" aria-label="工程承攬業銷售與收款循環流程圖">
+        <svg viewBox="0 0 1080 210" role="img" aria-labelledby="flow-title">
+          <title id="flow-title">合約到異常追蹤治理流程</title>
+          <defs>
+            <linearGradient id="nodeWash" x1="0" x2="1">
+              <stop offset="0" stop-color="#ffffff"/>
+              <stop offset="1" stop-color="#edf6ef"/>
+            </linearGradient>
+            <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#61738c"/>
+            </marker>
+          </defs>
+          <rect x="10" y="20" width="1060" height="170" rx="18" fill="rgba(255,255,255,0.62)" stroke="#dbe3ee"/>
+          <g font-family="-apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif" font-weight="800" text-anchor="middle">
+            <g transform="translate(70 80)">
+              <rect x="-48" y="-32" width="96" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">合約</text>
+            </g>
+            <g transform="translate(200 80)">
+              <rect x="-48" y="-32" width="96" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">變更</text>
+            </g>
+            <g transform="translate(330 80)">
+              <rect x="-48" y="-32" width="96" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">估驗</text>
+            </g>
+            <g transform="translate(460 80)">
+              <rect x="-48" y="-32" width="96" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">請款</text>
+            </g>
+            <g transform="translate(590 80)">
+              <rect x="-48" y="-32" width="96" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">收款</text>
+            </g>
+            <g transform="translate(720 80)">
+              <rect x="-54" y="-32" width="108" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">保留款</text>
+            </g>
+            <g transform="translate(855 80)">
+              <rect x="-48" y="-32" width="96" height="64" rx="12" fill="url(#nodeWash)" stroke="#b8c6d6"/>
+              <text y="7" font-size="21" fill="#17233f">驗收</text>
+            </g>
+            <g transform="translate(995 80)">
+              <rect x="-58" y="-32" width="116" height="64" rx="12" fill="#fff6df" stroke="#d8b87c"/>
+              <text y="7" font-size="21" fill="#6f4310">異常追蹤</text>
+            </g>
+          </g>
+          <g stroke="#61738c" stroke-width="3" marker-end="url(#arrow)">
+            <line x1="118" y1="80" x2="152" y2="80"/>
+            <line x1="248" y1="80" x2="282" y2="80"/>
+            <line x1="378" y1="80" x2="412" y2="80"/>
+            <line x1="508" y1="80" x2="542" y2="80"/>
+            <line x1="638" y1="80" x2="666" y2="80"/>
+            <line x1="774" y1="80" x2="807" y2="80"/>
+            <line x1="903" y1="80" x2="937" y2="80"/>
+          </g>
+          <text x="540" y="154" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif" font-size="20" font-weight="700" fill="#40506a">每一步都要說清楚：誰負責、依據什麼、留下什麼證據、異常如何追蹤。</text>
+        </svg>
+      </div>
+      <p class="plain-note">這份文件先把工程承攬業從合約到收款的流程講清楚，讓主管、財會、工程與稽核能用同一套語言討論。</p>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Documents</p>
+          <h2>S / A / B 三份對照文件</h2>
+        </div>
+        <p class="section-note">S 版代表市場主流傳統 SOP 樣貌；A 版負責治理進化；B 版負責 Computer Audit 深度檢查。</p>
+      </div>
+
+      <div class="version-map" aria-label="S A B 文件定位對照">
+        <div class="version-step">
+          <strong>S版：市場現況</strong>
+          <span>一般上市櫃公司熟悉的 SOP / 內控制度樣貌，用來當 baseline。</span>
+        </div>
+        <div class="version-step">
+          <strong>A版：治理進化</strong>
+          <span>在傳統 SOP 上加強 Workflow、KCP、文件治理與可維護性。</span>
+        </div>
+        <div class="version-step">
+          <strong>B版：電腦稽核深化</strong>
+          <span>以系統資料、Log、Audit Trail、例外清單檢查制度是否落地。</span>
+        </div>
+      </div>
+
+      <div class="cards docs-cards">
+        <article class="card">
+          <span class="role">Sample Version</span>
+          <h3>S版：傳統 SOP baseline</h3>
+          <p>這份代表「一般公司現在常見的 SOP 長相」。它不是簡化版，而是市場主流現況：流程、權責、表單、簽核、留存，語氣偏正式內控制度與稽核室文件。</p>
+          <div class="links">
+            <a class="link" href="docs/06_outputs_html/EPC_SALES_COLLECTION_GOVERNANCE_SAMPLE_v0.1.html">閱讀 HTML</a>
+            <a class="link" href="docs/03_sop_framework/EPC_SALES_COLLECTION_GOVERNANCE_SAMPLE_v0.1.md">下載 Markdown</a>
+          </div>
+        </article>
+        <article class="card">
+          <span class="role">Governance Version</span>
+          <h3>A版：治理主文件</h3>
+          <p>這份是在 S 版基礎上往「可治理、可維護、可討論」推進。重點是流程語言、KCP、Workflow、文件治理與跨部門責任可以被主管與稽核一起使用。</p>
+          <div class="links">
+            <a class="link" href="docs/06_outputs_html/EPC_SALES_COLLECTION_GOVERNANCE_v0.2.html">閱讀 HTML</a>
+            <a class="link" href="docs/03_sop_framework/EPC_SALES_COLLECTION_GOVERNANCE_v0.2.md">下載 Markdown</a>
+          </div>
+        </article>
+        <article class="card">
+          <span class="role">Computer Audit Version</span>
+          <h3>B版：Computer Audit 附加版本</h3>
+          <p>這份不是另一套制度，而是用 ERP、Workflow、Log、Audit Trail、SoD 與例外規則檢查 A 版主文件是否真的被執行，適合稽核、資訊與 ERP 人員閱讀。</p>
+          <div class="links">
+            <a class="link" href="docs/06_outputs_html/EPC_SALES_COLLECTION_GOVERNANCE_CA_v0.2.html">閱讀 HTML</a>
+            <a class="link" href="docs/03_sop_framework/EPC_SALES_COLLECTION_GOVERNANCE_CA_v0.2.md">下載 Markdown</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section case">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Special Case</p>
+          <h2>疑似違建 / 未合法申報施工</h2>
+        </div>
+        <p class="section-note">這個案例用來測試專案稽核能否發現文件不一致、時序異常、ERP / Workflow 落差與現場證據不足。</p>
+      </div>
+
+      <div class="case-grid">
+        <div class="cards">
+          <article class="card">
+            <h3>Project Audit Case</h3>
+            <p>從專案全生命週期看異常風險、KCP、Red Flags、Workflow / ERP 關聯與證據鏈。</p>
+            <div class="links">
+              <a class="link" href="docs/06_outputs_html/SPECIAL_CASE_PROJECT_AUDIT.html">閱讀 HTML</a>
+              <a class="link" href="docs/04_computer_audit/SPECIAL_CASE_PROJECT_AUDIT.md">下載 Markdown</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Project Audit Checklist</h3>
+            <p>提供合法性文件、合約與施工一致性、估驗、請款、驗收、保留款、Workflow、ERP 與 Audit Trail 檢核表。</p>
+            <div class="links">
+              <a class="link" href="docs/06_outputs_html/SPECIAL_CASE_PROJECT_CHECKLIST.html">閱讀 HTML</a>
+              <a class="link" href="docs/04_computer_audit/SPECIAL_CASE_PROJECT_CHECKLIST.md">下載 Markdown</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Computer Audit Support</h3>
+            <p>整理資料來源、Suspicious Timeline、例外規則、證據地圖與人工覆核規則。</p>
+            <div class="links">
+              <a class="link" href="docs/06_outputs_html/SPECIAL_CASE_COMPUTER_AUDIT_SUPPORT.html">閱讀 HTML</a>
+              <a class="link" href="docs/04_computer_audit/SPECIAL_CASE_COMPUTER_AUDIT_SUPPORT.md">下載 Markdown</a>
+            </div>
+          </article>
+        </div>
+        <aside class="guardrail">
+          <p class="eyebrow">Boundary</p>
+          <h3>這個案例不是什麼</h3>
+          <ul>
+            <li>不是法律判定。</li>
+            <li>不是系統自動認定違建。</li>
+            <li>不是自動核准或否決工程款。</li>
+            <li>不是對外服務提案。</li>
+            <li>最終判斷仍由稽核主管、法務與專業人員負責。</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Principles</p>
+          <h2>本版文件原則</h2>
+        </div>
+        <p class="section-note">目前停在傳統治理文件與 Computer Audit 附加版本，不往更高階自動化延伸。</p>
+      </div>
+      <div class="principles">
+        <div class="principle">
+          <strong>治理優先</strong>
+          <span>先定義流程、權責、控制點與證據，再談系統檢查。</span>
+        </div>
+        <div class="principle">
+          <strong>漸進導入</strong>
+          <span>內控 / SOP → Computer Audit → Workflow / ERP → 系統留痕。</span>
+        </div>
+        <div class="principle">
+          <strong>人工覆核</strong>
+          <span>例外清單只是提示，稽核結論仍由人負責。</span>
+        </div>
+        <div class="principle">
+          <strong>可追溯</strong>
+          <span>每個流程、表單、附件與 Log 都要能回到同一條證據鏈。</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      工程承攬業治理工作稿 · 供公司稽核主管個人使用與內部討論 · Markdown 便於版本控管，HTML 便於閱讀展示
+    </footer>
+  </main>
+</body>
+</html>

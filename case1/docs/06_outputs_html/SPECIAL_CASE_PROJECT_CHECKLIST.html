@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Special Case Project Checklist: 工程承攬專案稽核 Checklist 初版</title>
+  <meta name="description" content="工程承攬業治理文件 responsive HTML version.">
+  <style>
+    :root {
+      --ink: #10264f;
+      --muted: #5f6e88;
+      --line: rgba(21, 53, 105, 0.15);
+      --blue: #174e9f;
+      --green: #2d7b5b;
+      --amber: #b66a14;
+      --paper: #fffdf8;
+      --soft: rgba(255, 255, 255, 0.82);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.76;
+      background:
+        radial-gradient(circle at 9% 4%, rgba(23, 78, 159, 0.14), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(182, 106, 20, 0.14), transparent 28%),
+        linear-gradient(180deg, #f7fbff 0%, var(--paper) 45%, #f7faf4 100%);
+    }
+    main {
+      width: min(1080px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+    .hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 24px 70px rgba(18, 47, 91, 0.12);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.4rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    .meta {
+      margin: 16px 0 0;
+      color: var(--muted);
+    }
+    article {
+      margin-top: 22px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+    h2 {
+      margin-top: 2.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(21, 53, 105, 0.12);
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      line-height: 1.2;
+    }
+    h3 { margin-top: 1.7rem; font-size: 1.25rem; }
+    h4, h5, h6 { margin-top: 1.4rem; }
+    p { margin: 0.85rem 0; }
+    ul, ol { padding-left: 1.35rem; }
+    li { margin: 0.25rem 0; }
+    blockquote {
+      margin: 1.2rem 0;
+      padding: 0.9rem 1rem;
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      background: rgba(255, 248, 232, 0.8);
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.2rem 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td {
+      padding: 0.72rem 0.82rem;
+      border-bottom: 1px solid rgba(21, 53, 105, 0.1);
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      color: #0f3674;
+      font-weight: 900;
+      background: rgba(23, 78, 159, 0.08);
+    }
+    code {
+      padding: 0.12rem 0.28rem;
+      border-radius: 5px;
+      background: rgba(23, 78, 159, 0.08);
+      color: #0f3674;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 1rem;
+      border-radius: var(--radius);
+      background: #10264f;
+      color: #f7fbff;
+    }
+    pre code { padding: 0; color: inherit; background: transparent; }
+    a { color: var(--blue); font-weight: 700; }
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      main { width: min(100% - 18px, 1080px); padding-top: 10px; }
+      .hero, article { padding: 18px; }
+      table { min-width: 640px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="hero">
+      <p class="eyebrow">治理文件 HTML</p>
+      <h1>Special Case Project Checklist: 工程承攬專案稽核 Checklist 初版</h1>
+      <p class="meta">Markdown source converted to a single-file responsive HTML page.</p>
+    </header>
+    <article>
+<h1>Special Case Project Checklist: 工程承攬專案稽核 Checklist 初版</h1>
+<p>文件狀態：初版 Special Case：疑似違建 / 未合法申報施工 定位：Computer Audit 專案稽核檢核表 重要聲明：本 Checklist 用於發現風險與蒐集證據，不用於自動判定違建或取代稽核主管與專業人員判斷。</p>
+<h2>1. 使用方式</h2>
+<p>本 Checklist 以專案全生命週期為檢核單位。</p>
+<p>建議使用順序：</p>
+<ol>
+<li>先確認專案基本資料與合法性文件。</li>
+<li>再比對合約、圖說、現場、估驗、請款與驗收。</li>
+<li>再檢查 ERP / Workflow / Audit Trail 是否支撐同一條證據鏈。</li>
+<li>最後由稽核主管或稽核人員判斷是否形成稽核發現、待釐清事項或改善建議。</li>
+</ol>
+<h2>2. 專案基本資料</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>專案代號</td><td>是否一案一碼，且可連到合約、變更、估驗、請款、收款與驗收？</td><td>ERP Project Master</td><td>待查</td><td></td></tr><tr><td>專案名稱</td><td>專案名稱是否與合約、Workflow、圖說一致？</td><td>ERP / 合約 / DMS</td><td>待查</td><td></td></tr><tr><td>專案地點</td><td>ERP 地點是否與合約、建照、圖說、施工照片一致？</td><td>ERP / 合約 / 合法性文件</td><td>待查</td><td></td></tr><tr><td>專案狀態</td><td>狀態是否符合實際進度？</td><td>ERP / Workflow / 現場紀錄</td><td>待查</td><td></td></tr><tr><td>專案權責</td><td>業務、工程、財務、法務、資訊、稽核權責是否清楚？</td><td>RACI / Workflow</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>3. 合法性文件</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>建照 / 雜項執照</td><td>本案是否需要建照或雜項執照？若需要，文件是否存在？</td><td>DMS / 專案主檔 / 法務判斷</td><td>待查</td><td></td></tr><tr><td>變更設計</td><td>施工範圍變更是否已申請並核准？</td><td>變更單 / 圖說 / DMS</td><td>待查</td><td></td></tr><tr><td>核准圖說</td><td>是否有核准圖說版本，且可對應施工期間？</td><td>DMS / 圖說管理</td><td>待查</td><td></td></tr><tr><td>使用 / 驗收文件</td><td>若涉及完工使用或驗收，是否有必要文件？</td><td>驗收文件 / DMS</td><td>待查</td><td></td></tr><tr><td>免辦依據</td><td>若主張免辦，是否有法務、建築師或主管機關文件支持？</td><td>法務意見 / 專業判斷 / 主管機關文件</td><td>待查</td><td></td></tr><tr><td>文件編號</td><td>合法性文件編號是否記錄於 ERP 或 Workflow？</td><td>ERP / Workflow</td><td>待查</td><td></td></tr><tr><td>文件版本</td><td>是否可辨識版本、日期、核准範圍？</td><td>DMS / 文件版控</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>4. 合約與施工一致性</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>合約範圍</td><td>合約施工範圍是否明確？</td><td>合約 / BOQ / 附件</td><td>待查</td><td></td></tr><tr><td>合約圖說</td><td>合約附件圖說是否與核准圖說一致？</td><td>合約 / DMS / 圖說管理</td><td>待查</td><td></td></tr><tr><td>合約金額</td><td>合約金額是否涵蓋實際施工範圍？</td><td>ERP / 合約 / 變更單</td><td>待查</td><td></td></tr><tr><td>合約外施工</td><td>是否有合約外施工項目？</td><td>施工日報 / 照片 / 估驗單</td><td>待查</td><td></td></tr><tr><td>變更授權</td><td>合約外施工是否有正式變更單與核准？</td><td>Change Order / Workflow</td><td>待查</td><td></td></tr><tr><td>先施工後補</td><td>是否有施工日期早於合約或變更核准日期？</td><td>Timeline / 施工日報 / Workflow</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>5. 圖說與現場一致性</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>圖說版本</td><td>現場施工依據哪一版圖說？</td><td>圖說管理 / DMS</td><td>待查</td><td></td></tr><tr><td>現場照片</td><td>照片是否有日期、地點、位置、施工項目？</td><td>照片 / 現場系統</td><td>待查</td><td></td></tr><tr><td>施工日報</td><td>日報是否能對應圖說區域與估驗項目？</td><td>施工日報</td><td>待查</td><td></td></tr><tr><td>監造紀錄</td><td>是否有監造或專業人員確認？</td><td>監造紀錄 / 會議紀錄</td><td>待查</td><td></td></tr><tr><td>超範圍施工</td><td>是否出現超出核准圖說或合約範圍的項目？</td><td>圖說 / 照片 / 估驗</td><td>待查</td><td></td></tr><tr><td>現場與 ERP 落差</td><td>ERP 顯示完成的項目，現場證據是否支持？</td><td>ERP / 現場紀錄</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>6. 估驗合理性</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>估驗依據</td><td>估驗是否依合約、核准圖說、施工日報與照片？</td><td>ERP Valuation / DMS</td><td>待查</td><td></td></tr><tr><td>估驗範圍</td><td>是否包含未核准變更或合約外工程？</td><td>估驗單 / 變更單 / 合約</td><td>待查</td><td></td></tr><tr><td>累計估驗</td><td>累計估驗是否超過合約或核准變更金額？</td><td>ERP / 合約 / Change Order</td><td>待查</td><td></td></tr><tr><td>估驗日期</td><td>估驗日期是否晚於施工與必要核准日期？</td><td>Suspicious Timeline</td><td>待查</td><td></td></tr><tr><td>附件完整性</td><td>估驗附件是否包含圖說、照片、日報或監造確認？</td><td>Workflow / DMS</td><td>待查</td><td></td></tr><tr><td>補件紀錄</td><td>是否有簽核後補傳附件？</td><td>Workflow Log</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>7. 請款合理性</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>請款基礎</td><td>請款是否對應已核准估驗？</td><td>AR / Billing / Valuation</td><td>待查</td><td></td></tr><tr><td>請款金額</td><td>請款金額是否小於或等於可請款估驗金額？</td><td>ERP / Billing</td><td>待查</td><td></td></tr><tr><td>請款日期</td><td>請款日期是否晚於估驗核准日期？</td><td>ERP / Timeline</td><td>待查</td><td></td></tr><tr><td>發票一致性</td><td>發票與請款單金額、稅額、專案代號是否一致？</td><td>發票 / AR / ERP</td><td>待查</td><td></td></tr><tr><td>重複請款</td><td>是否存在同一估驗重複請款？</td><td>Billing / AR</td><td>待查</td><td></td></tr><tr><td>合約外請款</td><td>是否針對未核准施工請款？</td><td>Billing / Change Order</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>8. 驗收合理性</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>驗收依據</td><td>驗收是否對應合約、圖說與實際完成項目？</td><td>驗收文件 / 合約 / 圖說</td><td>待查</td><td></td></tr><tr><td>驗收日期</td><td>驗收日期是否晚於必要施工與核准程序？</td><td>Timeline</td><td>待查</td><td></td></tr><tr><td>缺失改善</td><td>缺失是否列管、改善、複驗？</td><td>缺失清單 / Workflow</td><td>待查</td><td></td></tr><tr><td>驗收附件</td><td>是否有業主、監造、內部主管或相關人員確認？</td><td>DMS / Workflow</td><td>待查</td><td></td></tr><tr><td>使用或結案文件</td><td>是否有必要使用、結案或主管機關文件？</td><td>DMS / 法務 / 專業判斷</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>9. 保留款</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>保留款比例</td><td>比例是否依合約設定？</td><td>合約 / ERP</td><td>待查</td><td></td></tr><tr><td>保留款台帳</td><td>台帳是否完整、可按專案追蹤？</td><td>ERP / Retention</td><td>待查</td><td></td></tr><tr><td>釋放條件</td><td>釋放是否依驗收、保固或合約條件？</td><td>合約 / 驗收文件</td><td>待查</td><td></td></tr><tr><td>釋放時序</td><td>釋放日期是否晚於驗收或必要文件日期？</td><td>Timeline / ERP</td><td>待查</td><td></td></tr><tr><td>異常釋放</td><td>是否有未驗收、未結案或文件不足仍釋放？</td><td>ERP / Workflow</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>10. Workflow</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>簽核路徑</td><td>是否符合權責與核決權限？</td><td>Workflow</td><td>待查</td><td></td></tr><tr><td>附件要求</td><td>是否強制上傳合法性文件、圖說、估驗證據？</td><td>Workflow 設定</td><td>待查</td><td></td></tr><tr><td>退回紀錄</td><td>是否有退回、補件、重送紀錄？</td><td>Workflow Log</td><td>待查</td><td></td></tr><tr><td>補簽核</td><td>是否有流程完成後補簽或補附件？</td><td>Workflow Log</td><td>待查</td><td></td></tr><tr><td>例外放行</td><td>例外是否有理由、核准層級與期限？</td><td>Exception Workflow</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>11. ERP</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>必填欄位</td><td>專案主檔是否有合法性文件欄位？</td><td>ERP 設定</td><td>待查</td><td></td></tr><tr><td>狀態控管</td><td>未核准變更是否可進入估驗？</td><td>ERP / Workflow</td><td>待查</td><td></td></tr><tr><td>交叉勾稽</td><td>合約、變更、估驗、請款、收款是否可串接？</td><td>ERP Data Model</td><td>待查</td><td></td></tr><tr><td>後台修改</td><td>是否有管理者直接修改主檔、金額或狀態？</td><td>ERP Log</td><td>待查</td><td></td></tr><tr><td>例外報表</td><td>是否可產生未上傳文件仍估驗、先施工後變更等清單？</td><td>ERP Report</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>12. Audit Trail</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>建立紀錄</td><td>誰建立專案、合約、變更、估驗、請款？</td><td>ERP / Workflow Log</td><td>待查</td><td></td></tr><tr><td>修改紀錄</td><td>誰修改金額、日期、狀態、附件？</td><td>Audit Trail</td><td>待查</td><td></td></tr><tr><td>刪除紀錄</td><td>是否有刪除或作廢紀錄？</td><td>Audit Trail</td><td>待查</td><td></td></tr><tr><td>附件紀錄</td><td>附件是否有上傳人、時間、版本？</td><td>DMS / Workflow</td><td>待查</td><td></td></tr><tr><td>匯出能力</td><td>稽核是否可匯出完整證據鏈？</td><td>ERP / DMS / Workflow</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>13. SoD</h2>
+<div class="table-wrap"><table><thead><tr><th>檢核項目</th><th>Audit Question</th><th>資料來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>專案建檔 vs 核准</td><td>建檔人與核准人是否分離？</td><td>ERP Role / Workflow</td><td>待查</td><td></td></tr><tr><td>估驗 vs 請款</td><td>估驗核准與請款建立是否分離？</td><td>ERP Role</td><td>待查</td><td></td></tr><tr><td>請款 vs 收款</td><td>請款人與收款沖帳人是否分離？</td><td>ERP Role</td><td>待查</td><td></td></tr><tr><td>主檔維護 vs 交易</td><td>主檔維護者是否可同時做交易？</td><td>RBAC / SoD Matrix</td><td>待查</td><td></td></tr><tr><td>IT 特權帳號</td><td>特權帳號操作是否定期複核？</td><td>Privileged Log</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>14. Suspicious Timeline Checklist</h2>
+<div class="table-wrap"><table><thead><tr><th>日期關係</th><th>是否異常</th><th>證據來源</th><th>結果</th><th>備註</th></tr></thead><tbody><tr><td>施工日是否早於合法性文件核准日？</td><td>是 / 否</td><td>施工日報 / 合法性文件</td><td>待查</td><td></td></tr><tr><td>施工日是否早於變更單核准日？</td><td>是 / 否</td><td>施工日報 / Change Order</td><td>待查</td><td></td></tr><tr><td>估驗日是否早於變更單核准日？</td><td>是 / 否</td><td>Valuation / Workflow</td><td>待查</td><td></td></tr><tr><td>請款日是否早於估驗核准日？</td><td>是 / 否</td><td>Billing / Workflow</td><td>待查</td><td></td></tr><tr><td>收款日是否早於請款核准日？</td><td>是 / 否</td><td>Collection / Billing</td><td>待查</td><td></td></tr><tr><td>驗收日是否早於圖說或變更補正日？</td><td>是 / 否</td><td>驗收文件 / DMS</td><td>待查</td><td></td></tr><tr><td>保留款釋放日是否早於驗收日？</td><td>是 / 否</td><td>Retention / 驗收文件</td><td>待查</td><td></td></tr></tbody></table></div>
+<h2>15. Red Flags 總表</h2>
+<div class="table-wrap"><table><thead><tr><th>Red Flag</th><th>風險意義</th><th>建議稽核動作</th></tr></thead><tbody><tr><td>ERP 專案已建立，但合法性文件欄位空白</td><td>系統流程可能未綁定合法性文件</td><td>要求補齊文件或提供免辦判斷</td></tr><tr><td>Workflow 已核准，但附件版本不明</td><td>形式簽核不足以支撐證據鏈</td><td>查核附件版本與補傳紀錄</td></tr><tr><td>施工日早於變更核准日</td><td>可能先施工後補件</td><td>建立 Suspicious Timeline</td></tr><tr><td>估驗包含未核准變更項目</td><td>未核准工程進入計價</td><td>比對估驗、合約、變更單</td></tr><tr><td>請款早於估驗核准</td><td>請款基礎不足</td><td>查核 AR / Billing 流程</td></tr><tr><td>現場照片與圖說不一致</td><td>可能超範圍或未核准施工</td><td>要求專業人員判讀與現場複核</td></tr><tr><td>保留款未驗收即釋放</td><td>結案控制失效</td><td>查核保留款釋放條件</td></tr><tr><td>同一人多重權限</td><td>SoD 失效</td><td>產出權限衝突清單</td></tr></tbody></table></div>
+<h2>16. 稽核結論欄位</h2>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>說明</th></tr></thead><tbody><tr><td>初步風險等級</td><td>High / Medium / Low</td></tr><tr><td>主要異常類型</td><td>文件不足 / 時序異常 / 圖說不一致 / ERP 落差 / Workflow 附件不足</td></tr><tr><td>待補證據</td><td>列出缺少的文件或系統資料</td></tr><tr><td>需訪談對象</td><td>業務 / 工程 / 財務 / 法務 / 資訊 / 監造 / 專案經理</td></tr><tr><td>稽核判斷</td><td>最終由稽核人員記錄，不由系統自動填寫</td></tr><tr><td>改善建議</td><td>SOP / Workflow / ERP / 權限 / 文件治理改善</td></tr></tbody></table></div>
+    </article>
+    <footer>個人工作稿，供內部治理討論與電腦稽核規劃使用。Markdown 便於版本控管，HTML 便於閱讀與展示。</footer>
+  </main>
+</body>
+</html>

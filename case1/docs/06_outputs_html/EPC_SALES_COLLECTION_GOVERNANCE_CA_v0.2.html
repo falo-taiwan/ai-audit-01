@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工程承攬業銷售與收款循環治理作業辦法 Computer Audit 附加版本 v0.2</title>
+  <meta name="description" content="工程承攬業治理文件 responsive HTML version.">
+  <style>
+    :root {
+      --ink: #10264f;
+      --muted: #5f6e88;
+      --line: rgba(21, 53, 105, 0.15);
+      --blue: #174e9f;
+      --green: #2d7b5b;
+      --amber: #b66a14;
+      --paper: #fffdf8;
+      --soft: rgba(255, 255, 255, 0.82);
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.76;
+      background:
+        radial-gradient(circle at 9% 4%, rgba(23, 78, 159, 0.14), transparent 28%),
+        radial-gradient(circle at 88% 8%, rgba(182, 106, 20, 0.14), transparent 28%),
+        linear-gradient(180deg, #f7fbff 0%, var(--paper) 45%, #f7faf4 100%);
+    }
+    main {
+      width: min(1080px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+    .hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.76);
+      box-shadow: 0 24px 70px rgba(18, 47, 91, 0.12);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 0.86rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.4rem);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    .meta {
+      margin: 16px 0 0;
+      color: var(--muted);
+    }
+    article {
+      margin-top: 22px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft);
+    }
+    h2 {
+      margin-top: 2.1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(21, 53, 105, 0.12);
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      line-height: 1.2;
+    }
+    h3 { margin-top: 1.7rem; font-size: 1.25rem; }
+    h4, h5, h6 { margin-top: 1.4rem; }
+    p { margin: 0.85rem 0; }
+    ul, ol { padding-left: 1.35rem; }
+    li { margin: 0.25rem 0; }
+    blockquote {
+      margin: 1.2rem 0;
+      padding: 0.9rem 1rem;
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      background: rgba(255, 248, 232, 0.8);
+    }
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.2rem 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    table { width: 100%; border-collapse: collapse; min-width: 720px; }
+    th, td {
+      padding: 0.72rem 0.82rem;
+      border-bottom: 1px solid rgba(21, 53, 105, 0.1);
+      vertical-align: top;
+      text-align: left;
+    }
+    th {
+      color: #0f3674;
+      font-weight: 900;
+      background: rgba(23, 78, 159, 0.08);
+    }
+    code {
+      padding: 0.12rem 0.28rem;
+      border-radius: 5px;
+      background: rgba(23, 78, 159, 0.08);
+      color: #0f3674;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 1rem;
+      border-radius: var(--radius);
+      background: #10264f;
+      color: #f7fbff;
+    }
+    pre code { padding: 0; color: inherit; background: transparent; }
+    a { color: var(--blue); font-weight: 700; }
+    footer {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      main { width: min(100% - 18px, 1080px); padding-top: 10px; }
+      .hero, article { padding: 18px; }
+      table { min-width: 640px; }
+    }
+
+    main {
+      overflow-x: clip;
+    }
+    .showcase-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.36fr);
+      gap: 22px;
+      align-items: stretch;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.92), rgba(247,251,255,0.82)),
+        radial-gradient(circle at 10% 10%, rgba(45,123,91,0.12), transparent 32%);
+      box-shadow: 0 24px 70px rgba(18, 47, 91, 0.12);
+    }
+    .showcase-hero h1 {
+      max-width: 820px;
+      font-size: clamp(2.05rem, 4.8vw, 4.1rem);
+    }
+    .lead {
+      max-width: 820px;
+      margin: 18px 0 0;
+      color: #314565;
+      font-size: clamp(1.05rem, 2vw, 1.32rem);
+      line-height: 1.72;
+    }
+    .hero-note {
+      display: flex;
+      min-height: 100%;
+      padding: 18px;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px solid rgba(23, 78, 159, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+    }
+    .hero-note strong {
+      color: var(--blue);
+      font-size: 1.08rem;
+    }
+    .hero-note p {
+      color: var(--muted);
+    }
+    .diagram-panel,
+    .focus-panel,
+    .doc-info-panel {
+      margin-top: 20px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.82);
+    }
+    .diagram-panel h2,
+    .focus-panel h2,
+    .doc-info-panel h2 {
+      margin: 0 0 14px;
+      padding: 0;
+      border: 0;
+      font-size: clamp(1.35rem, 2.5vw, 2rem);
+    }
+    .svg-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 6px 2px 10px;
+    }
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+    .flow-svg {
+      display: block;
+      width: 100%;
+      min-width: 860px;
+      height: auto;
+    }
+    .flow-box {
+      fill: rgba(255, 255, 255, 0.94);
+      stroke: rgba(23, 78, 159, 0.32);
+      stroke-width: 1.3;
+    }
+    .flow-box.alt {
+      stroke: rgba(45, 123, 91, 0.42);
+    }
+    .flow-label {
+      fill: #10264f;
+      font-size: 20px;
+      font-weight: 800;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .flow-sub {
+      fill: #5f6e88;
+      font-size: 13px;
+      font-weight: 700;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+    .flow-arrow {
+      stroke: rgba(23, 78, 159, 0.55);
+      stroke-width: 2.4;
+      marker-end: url(#arrow);
+    }
+    .plain-summary {
+      margin: 14px 0 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--green);
+      border-radius: var(--radius);
+      color: #243a2f;
+      font-size: 1.08rem;
+      font-weight: 750;
+      background: rgba(236, 248, 241, 0.88);
+    }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .focus-card {
+      padding: 16px;
+      border: 1px solid rgba(21, 53, 105, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.78);
+    }
+    .focus-card h3 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 1.05rem;
+    }
+    .focus-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.62;
+    }
+    .doc-info-panel {
+      background: rgba(247, 251, 255, 0.72);
+    }
+    .doc-info-panel ul {
+      margin-bottom: 0;
+    }
+    article > h1:first-child {
+      display: none;
+    }
+    @media (max-width: 900px) {
+      .showcase-hero {
+        grid-template-columns: 1fr;
+      }
+      .focus-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .showcase-hero,
+      .diagram-panel,
+      .focus-panel,
+      .doc-info-panel {
+        padding: 18px;
+      }
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
+      .flow-svg {
+        min-width: 760px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <main>
+
+    <header class="showcase-hero">
+      <div>
+        <p class="eyebrow">Computer Audit 工作稿 / v0.2</p>
+        <h1>Computer Audit 附加版本</h1>
+        <p class="lead">這份不是另一套制度，而是用系統資料檢查主文件有沒有真的被執行。它協助稽核人員找出例外、整理證據，最後仍由稽核主管人工判斷。</p>
+      </div>
+      <aside class="hero-note">
+        <strong>CA 版看什麼？</strong>
+        <p>看 ERP、Workflow、Log、Audit Trail 與例外清單如何回扣主文件的流程與 KCP。</p>
+      </aside>
+    </header>
+    <section class="diagram-panel" aria-labelledby="ca-flow-title">
+      <h2 id="ca-flow-title">從主文件到電腦稽核例外清單</h2>
+      <div class="svg-scroll">
+        <svg class="flow-svg" viewBox="0 0 1040 190" role="img" aria-label="主文件流程到人工判斷流程圖" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L8,3 z" fill="rgba(23, 78, 159, 0.6)" />
+            </marker>
+          </defs>
+          <rect x="20" y="50" width="135" height="70" rx="8" class="flow-box alt" />
+          <text x="87.5" y="75" class="flow-label">主文件</text>
+          <text x="87.5" y="99" class="flow-sub">流程 / KCP</text>
+          <line x1="160" y1="85" x2="187" y2="85" class="flow-arrow" />
+          <rect x="195" y="50" width="135" height="70" rx="8" class="flow-box" />
+          <text x="262.5" y="75" class="flow-label">系統資料</text>
+          <text x="262.5" y="99" class="flow-sub">ERP / DMS</text>
+          <line x1="335" y1="85" x2="362" y2="85" class="flow-arrow" />
+          <rect x="370" y="50" width="135" height="70" rx="8" class="flow-box alt" />
+          <text x="437.5" y="75" class="flow-label">Workflow</text>
+          <text x="437.5" y="99" class="flow-sub">簽核 / 狀態</text>
+          <line x1="510" y1="85" x2="537" y2="85" class="flow-arrow" />
+          <rect x="545" y="50" width="135" height="70" rx="8" class="flow-box" />
+          <text x="612.5" y="75" class="flow-label">Log</text>
+          <text x="612.5" y="99" class="flow-sub">Audit Trail</text>
+          <line x1="685" y1="85" x2="712" y2="85" class="flow-arrow" />
+          <rect x="720" y="50" width="145" height="70" rx="8" class="flow-box alt" />
+          <text x="792.5" y="75" class="flow-label">例外清單</text>
+          <text x="792.5" y="99" class="flow-sub">Computer Audit</text>
+          <line x1="870" y1="85" x2="897" y2="85" class="flow-arrow" />
+          <rect x="905" y="50" width="115" height="70" rx="8" class="flow-box" />
+          <text x="962.5" y="75" class="flow-label">人工判斷</text>
+          <text x="962.5" y="99" class="flow-sub">稽核主管</text>
+        </svg>
+      </div>
+      <p class="plain-summary">這份不是另一套制度，而是用系統資料檢查主文件有沒有真的被執行。</p>
+    </section>
+    <section class="focus-panel" aria-labelledby="ca-focus-title">
+      <h2 id="ca-focus-title">CA 版先看這四件事</h2>
+      <div class="focus-grid">
+        <article class="focus-card">
+          <h3>資料能不能串起來？</h3>
+          <p>專案、合約、變更、估驗、請款、收款、保留款與驗收是否可追溯。</p>
+        </article>
+        <article class="focus-card">
+          <h3>流程有沒有真的跑？</h3>
+          <p>Workflow、附件、核准時間與系統狀態是否支持主文件要求。</p>
+        </article>
+        <article class="focus-card">
+          <h3>哪些例外要提示？</h3>
+          <p>先建案後核准、先開票後補簽、無附件估驗、未驗收釋放保留款。</p>
+        </article>
+        <article class="focus-card">
+          <h3>誰做最後判斷？</h3>
+          <p>系統只產生例外與證據鏈，最後仍由稽核主管與稽核人員判斷。</p>
+        </article>
+      </div>
+    </section>
+
+    <article>
+
+<h2>0. 文件聲明</h2>
+<p>本文件是《工程承攬業銷售與收款循環治理作業辦法 v0.1》的 Computer Audit 附加深度版。</p>
+<p>本文件不是另一套制度，而是針對主文件所定義的同一治理主題，補充以下內容：</p>
+<ul>
+<li>ERP / Workflow 控制。</li>
+<li>Audit Trail。</li>
+<li>Log。</li>
+<li>SoD。</li>
+<li>Computer Audit 測試規則。</li>
+<li>Suspicious Timeline。</li>
+<li>異常 Red Flags。</li>
+<li>數位證據鏈。</li>
+</ul>
+<p>本文件不進行法律判定，不建立全自動稽核，也不取代稽核主管與稽核人員的專業判斷。</p>
+<h2>1. 與主文件之關係</h2>
+<div class="table-wrap"><table><thead><tr><th>項目</th><th>主文件 A 版</th><th>CA 附加版 B 版</th></tr></thead><tbody><tr><td>核心定位</td><td>傳統治理主文件</td><td>Computer Audit 深度版</td></tr><tr><td>主要讀者</td><td>董事會、內稽、財會、營運、工程主管</td><td>電腦稽核、資訊、ERP / Workflow 相關人員</td></tr><tr><td>內容重點</td><td>SOP、流程、權責、KCP、表單、Workflow 基礎</td><td>ERP、Workflow、Audit Trail、Log、SoD、異常時序、資料勾稽</td></tr><tr><td>文件性質</td><td>企業可接受與可落地</td><td>電腦稽核深化與系統留痕檢查基礎</td></tr><tr><td>是否為新制度</td><td>否</td><td>否，僅為主文件附加深度版</td></tr></tbody></table></div>
+<p>本文件不得獨立脫離主文件使用。所有 Computer Audit 測試都應回扣主文件的流程、權責、KCP 與表單要求。</p>
+<h2>2. 漸進導入原則</h2>
+<p>電腦稽核導入必須循序漸進。</p>
+<pre><code>內控 / SOP
+  -&gt; Computer Audit
+  -&gt; Workflow / ERP
+  -&gt; 系統留痕與例外清單
+  -&gt; 管理追蹤與稽核覆核</code></pre>
+<p>本文件目前只處理：</p>
+<ul>
+<li>Computer Audit。</li>
+<li>Workflow / ERP 可稽核性。</li>
+<li>系統留痕與資料追溯。</li>
+<li>稽核例外清單與證據鏈整理。</li>
+</ul>
+<p>本文件不直接導入：</p>
+<ul>
+<li>全自動稽核。</li>
+<li>系統自動認定。</li>
+<li>系統自動核准。</li>
+<li>對外展示包裝。</li>
+</ul>
+<h2>3. Computer Audit 設計原則</h2>
+<p>本文件的 Computer Audit 不是為了炫技，而是為了支撐治理。</p>
+<p>設計原則：</p>
+<ul>
+<li>先對應主文件 KCP，再設計資料測試。</li>
+<li>先檢查流程是否一致，再檢查技術細節。</li>
+<li>先做例外清單，再做原因分析。</li>
+<li>先讓稽核主管與稽核人員看得懂，再談自動化。</li>
+<li>每一個測試點都要能回扣流程、權責、文件或表單。</li>
+<li>CA 結果只能作為異常提示，不直接等同缺失結論。</li>
+</ul>
+<h2>4. 核心資料鏈</h2>
+<p>工程承攬業銷售與收款循環的基本資料鏈如下：</p>
+<pre><code>Project_ID
+  -&gt; Contract_ID
+  -&gt; Change_Order_ID
+  -&gt; Valuation_ID
+  -&gt; Billing_ID
+  -&gt; Invoice_ID
+  -&gt; AR_ID
+  -&gt; Collection_ID
+  -&gt; Retention_ID
+  -&gt; Acceptance_ID
+  -&gt; Exception_ID</code></pre>
+<p>Computer Audit 的第一個任務，是確認這些資料鏈是否能串起來。</p>
+<p>常見問題：</p>
+<ul>
+<li>系統有專案，但缺合約附件。</li>
+<li>有估驗，但缺變更核准。</li>
+<li>有請款，但缺估驗依據。</li>
+<li>有收款，但未沖帳或沖錯專案。</li>
+<li>有保留款釋放，但缺驗收依據。</li>
+<li>有 Workflow 簽核，但附件是事後補上。</li>
+</ul>
+<h2>5. Audit Trail 黃金欄位</h2>
+<p>以下欄位是後續建立系統留痕與電腦稽核追溯能力的最低基礎。</p>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>說明</th><th>治理目的</th></tr></thead><tbody><tr><td>Record_ID</td><td>系統交易或主檔唯一識別碼</td><td>追溯單筆紀錄</td></tr><tr><td>Project_ID</td><td>專案代號</td><td>串聯專案生命週期</td></tr><tr><td>Contract_ID</td><td>合約代號</td><td>串聯合約與收入基礎</td></tr><tr><td>Source_Document_ID</td><td>原始文件代號</td><td>串聯文件證據</td></tr><tr><td>Workflow_Ref_ID</td><td>Workflow 簽核代號</td><td>確認授權來源</td></tr><tr><td>Created_By</td><td>建立人</td><td>確認責任歸屬</td></tr><tr><td>Created_At</td><td>建立時間</td><td>檢查時序</td></tr><tr><td>Approved_By</td><td>核准人</td><td>檢查授權</td></tr><tr><td>Approved_At</td><td>核准時間</td><td>檢查先後順序</td></tr><tr><td>Changed_By</td><td>異動人</td><td>檢查敏感異動</td></tr><tr><td>Changed_At</td><td>異動時間</td><td>檢查補登或後改</td></tr><tr><td>Change_Reason</td><td>異動原因</td><td>檢查合理性</td></tr><tr><td>Attachment_Hash</td><td>附件雜湊或版本識別</td><td>防止附件被替換</td></tr><tr><td>Status_Code</td><td>狀態碼</td><td>對齊 ERP / Workflow 狀態</td></tr></tbody></table></div>
+<h2>6. SoD 檢查原則</h2>
+<h3>6.1 不相容職責</h3>
+<div class="table-wrap"><table><thead><tr><th>不相容組合</th><th>風險</th><th>檢查方向</th></tr></thead><tbody><tr><td>合約建立 + 合約核准</td><td>未授權合約可能被自行建立</td><td>比對建立人與核准人</td></tr><tr><td>估驗提出 + 估驗核准</td><td>進度可能未經覆核</td><td>比對 PM、工程主管與核准人</td></tr><tr><td>請款提出 + 發票開立 + AR 建立</td><td>無基礎請款可能進入財務紀錄</td><td>檢查角色權限與交易人</td></tr><tr><td>收款確認 + 沖帳</td><td>自行消滅應收或錯沖</td><td>檢查財會角色分工</td></tr><tr><td>保留款釋放提出 + 核准</td><td>未達條件釋放</td><td>檢查驗收與核准人</td></tr><tr><td>ERP 主檔維護 + 業務核准</td><td>主檔與授權可能混淆</td><td>檢查資訊與業務權限</td></tr></tbody></table></div>
+<h3>6.2 權限治理</h3>
+<p>最低要求：</p>
+<ul>
+<li>高風險權限應定期複核。</li>
+<li>離職、調職、代理權限應有啟用與停用紀錄。</li>
+<li>特權帳號異動應留下原因與核准紀錄。</li>
+<li>同一人若具有不相容權限，應列入例外清單並由主管核准。</li>
+</ul>
+<h2>7. Computer Audit 控制矩陣</h2>
+<h3>7.1 SC-01 合約審查與案件建檔</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-01</td><td>合約主檔金額 vs Workflow 核准金額一致性</td><td>KCP-SC-01</td><td>ERP Contract / Workflow</td><td>合約授權與系統金額不一致</td></tr><tr><td>CA-SC-02</td><td>合約核准日 vs 專案生效日</td><td>KCP-SC-02</td><td>ERP Project / Workflow</td><td>可能先建案後補簽</td></tr><tr><td>CA-SC-03</td><td>合約敏感欄位異動 Log</td><td>KCP-SC-02</td><td>ERP Audit Log</td><td>主檔被事後修改</td></tr></tbody></table></div>
+<h3>7.2 SC-02 工程估驗計價與營收認列</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-04</td><td>原合約 + 已核准變更 &gt;= 累計估驗</td><td>KCP-SC-05</td><td>Contract / Change / Valuation</td><td>超額估驗</td></tr><tr><td>CA-SC-05</td><td>估驗單是否有 Workflow_Ref_ID</td><td>KCP-SC-06</td><td>ERP Valuation / Workflow</td><td>孤兒估驗或未授權估驗</td></tr><tr><td>CA-SC-06</td><td>同月多次估驗或異常估驗頻率</td><td>KCP-SC-04</td><td>ERP Valuation</td><td>進度認定異常</td></tr><tr><td>CA-SC-07</td><td>估驗附件完整性</td><td>KCP-SC-06</td><td>DMS / Workflow</td><td>證據不足或後補附件</td></tr></tbody></table></div>
+<h3>7.3 SC-03 契約變更與追加減帳</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-08</td><td>施工 / 估驗日期早於變更核准日期</td><td>KCP-SC-07</td><td>Change / Valuation / 施工紀錄</td><td>先施工後補變更</td></tr><tr><td>CA-SC-09</td><td>有效合約總價 = 原合約 + 已核准變更</td><td>KCP-SC-08</td><td>ERP Contract / Change</td><td>合約基礎錯誤</td></tr><tr><td>CA-SC-10</td><td>變更單退回後快速重送且內容未變</td><td>KCP-SC-09</td><td>Workflow Log</td><td>形式補簽或流程繞行</td></tr></tbody></table></div>
+<h3>7.4 SC-04 請款與發票管理</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-11</td><td>累計估驗 &gt;= 累計請款</td><td>KCP-SC-10</td><td>Valuation / Billing</td><td>超額請款</td></tr><tr><td>CA-SC-12</td><td>同一 Valuation_ID 是否重複請款</td><td>KCP-SC-10</td><td>Billing</td><td>重複請款</td></tr><tr><td>CA-SC-13</td><td>發票日期是否早於請款核准日</td><td>KCP-SC-11</td><td>Invoice / Workflow</td><td>先開票後補簽</td></tr><tr><td>CA-SC-14</td><td>發票金額、請款金額、AR 金額一致</td><td>KCP-SC-12</td><td>Invoice / Billing / AR</td><td>財務紀錄不一致</td></tr></tbody></table></div>
+<h3>7.5 SC-05 收款、沖帳與差異處理</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-15</td><td>請款 vs 收款 vs 沖帳一致性</td><td>KCP-SC-13</td><td>Billing / AR / Collection</td><td>錯沖、漏沖或未沖</td></tr><tr><td>CA-SC-16</td><td>銀行帳戶主檔異動 Log</td><td>KCP-SC-13</td><td>ERP Master / Audit Log</td><td>收款帳戶風險</td></tr><tr><td>CA-SC-17</td><td>未沖帳齡異常</td><td>KCP-SC-15</td><td>AR Aging</td><td>收款管理失效</td></tr><tr><td>CA-SC-18</td><td>同一使用者同時具請款與沖帳權限</td><td>KCP-SC-14</td><td>RBAC / User Role</td><td>SoD 失效</td></tr></tbody></table></div>
+<h3>7.6 SC-06 應收帳款與保留款管理</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-19</td><td>合約應扣留 vs ERP 實際扣留</td><td>KCP-SC-16</td><td>Contract / Retention</td><td>保留款計算錯誤</td></tr><tr><td>CA-SC-20</td><td>到期未釋放或未請領清單</td><td>KCP-SC-17</td><td>Retention Aging</td><td>保留款管理失效</td></tr><tr><td>CA-SC-21</td><td>保留款釋放日 vs 驗收日</td><td>KCP-SC-18</td><td>Retention / Acceptance</td><td>未達條件釋放</td></tr></tbody></table></div>
+<h3>7.7 SC-07 驗收、結案與保固管理</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-22</td><td>驗收完成日 vs 保留款釋放日</td><td>KCP-SC-20</td><td>Acceptance / Retention</td><td>未驗收即釋放</td></tr><tr><td>CA-SC-23</td><td>無驗收文件但專案狀態為結案</td><td>KCP-SC-19</td><td>ERP / DMS</td><td>結案證據不足</td></tr><tr><td>CA-SC-24</td><td>保固期未建立或到期未提醒</td><td>KCP-SC-21</td><td>Warranty / DMS</td><td>保固責任追蹤失效</td></tr></tbody></table></div>
+<h3>7.8 SC-08 異常、逾期與爭議處理</h3>
+<div class="table-wrap"><table><thead><tr><th>CA</th><th>測試點</th><th>對應 KCP</th><th>資料來源</th><th>異常意義</th></tr></thead><tbody><tr><td>CA-SC-25</td><td>重大異常未於期限內呈報</td><td>KCP-SC-22</td><td>Exception / Workflow</td><td>升級機制失效</td></tr><tr><td>CA-SC-26</td><td>爭議款仍列正常 AR</td><td>KCP-SC-23</td><td>AR / Exception</td><td>應收分類錯誤</td></tr><tr><td>CA-SC-27</td><td>異常結案缺附件或核准</td><td>KCP-SC-24</td><td>Exception / DMS</td><td>口頭結案或證據不足</td></tr></tbody></table></div>
+<h2>8. Suspicious Timeline</h2>
+<p>Suspicious Timeline 是用來檢查「先做、後補、時序異常」的治理工具。</p>
+<h3>8.1 核心日期</h3>
+<div class="table-wrap"><table><thead><tr><th>日期</th><th>來源</th><th>用途</th></tr></thead><tbody><tr><td>合約核准日</td><td>Workflow / DMS</td><td>確認專案授權起點</td></tr><tr><td>ERP 專案建立日</td><td>ERP Project</td><td>檢查是否先建案</td></tr><tr><td>施工開始日</td><td>施工日報 / PM 紀錄</td><td>檢查是否先施工</td></tr><tr><td>變更單建立日</td><td>ERP / Workflow</td><td>確認變更是否被正式提出</td></tr><tr><td>變更單核准日</td><td>Workflow</td><td>確認變更是否先核准</td></tr><tr><td>估驗申請日</td><td>ERP Valuation</td><td>檢查估驗是否早於核准</td></tr><tr><td>估驗核准日</td><td>Workflow</td><td>確認覆核完成</td></tr><tr><td>請款申請日</td><td>ERP Billing</td><td>檢查請款時點</td></tr><tr><td>發票開立日</td><td>Invoice</td><td>檢查是否早於核准請款</td></tr><tr><td>收款日</td><td>Bank / Collection</td><td>檢查沖帳與應收</td></tr><tr><td>驗收日</td><td>Acceptance</td><td>檢查保留款釋放條件</td></tr><tr><td>附件上傳日</td><td>DMS</td><td>檢查是否後補附件</td></tr></tbody></table></div>
+<h3>8.2 可疑時序規則</h3>
+<div class="table-wrap"><table><thead><tr><th>規則</th><th>可能風險</th></tr></thead><tbody><tr><td>ERP 專案建立日早於合約核准日</td><td>先建案後補合約</td></tr><tr><td>施工開始日早於合約核准日</td><td>未授權施工</td></tr><tr><td>估驗申請日早於變更核准日</td><td>先施工後補變更</td></tr><tr><td>請款申請日早於估驗核准日</td><td>未核准即請款</td></tr><tr><td>發票開立日早於請款核准日</td><td>先開票後補流程</td></tr><tr><td>保留款釋放日早於驗收日</td><td>未達條件釋放</td></tr><tr><td>附件上傳日晚於 Workflow 核准日</td><td>可能後補附件</td></tr></tbody></table></div>
+<h3>8.3 稽核使用方式</h3>
+<p>Suspicious Timeline 不直接判定缺失。</p>
+<p>它的用途是：</p>
+<ul>
+<li>產出異常清單。</li>
+<li>協助稽核人員選樣。</li>
+<li>提醒需補查的文件。</li>
+<li>建立專案生命週期證據鏈。</li>
+<li>支援稽核人員判斷。</li>
+</ul>
+<h2>9. Red Flags（CA 深度版）</h2>
+<div class="table-wrap"><table><thead><tr><th>Red Flag</th><th>技術觀察</th><th>治理意義</th></tr></thead><tbody><tr><td>ERP 有專案但缺合約 Workflow</td><td>系統主檔與授權斷裂</td><td>專案可能未正式核准</td></tr><tr><td>合約金額被修改但缺異動原因</td><td>Audit Log 無 Reason Code</td><td>主檔異動治理不足</td></tr><tr><td>估驗缺 Workflow_Ref_ID</td><td>孤兒交易</td><td>估驗未經正式核准</td></tr><tr><td>請款對應不到 Valuation_ID</td><td>資料鏈斷裂</td><td>可能無基礎請款</td></tr><tr><td>發票早於請款核准</td><td>時序異常</td><td>先執行後補流程</td></tr><tr><td>收款長期未沖帳</td><td>Aging 異常</td><td>AR 管理或沖帳流程失效</td></tr><tr><td>特權帳號修改高風險欄位</td><td>Admin Log 異常</td><td>後台操作風險</td></tr><tr><td>附件上傳晚於核准時間</td><td>DMS 時戳異常</td><td>可能後補附件</td></tr><tr><td>同一人具請款與沖帳權限</td><td>RBAC 異常</td><td>SoD 失效</td></tr><tr><td>爭議款仍列正常 AR</td><td>AR 狀態碼異常</td><td>財報與管理分類風險</td></tr></tbody></table></div>
+<h2>10. 稽核輔助整理範圍</h2>
+<p>本文件可搭配一般資料整理工具、試算表、ERP 報表與文件比對工具使用，但任何工具都不得自動作成稽核結論。</p>
+<p>工具可協助：</p>
+<ul>
+<li>文件比對。</li>
+<li>表單完整性檢查。</li>
+<li>時序排序。</li>
+<li>Workflow 狀態摘要。</li>
+<li>ERP 例外清單整理。</li>
+<li>Audit Trail 摘要。</li>
+<li>Red Flags 分類。</li>
+<li>證據鏈整理。</li>
+<li>專案風險摘要草稿。</li>
+</ul>
+<p>工具不可負責：</p>
+<ul>
+<li>判定缺失成立。</li>
+<li>判定違法或違建。</li>
+<li>核准交易。</li>
+<li>取代主管覆核。</li>
+<li>取代內部稽核專業判斷。</li>
+<li>自動執行稽核處置。</li>
+</ul>
+<p>最終判斷仍由稽核主管與稽核人員負責。</p>
+<h2>11. 證據鏈整理</h2>
+<h3>11.1 基本證據鏈</h3>
+<p>每一項 CA 異常至少應整理：</p>
+<ul>
+<li>Project_ID。</li>
+<li>交易或文件編號。</li>
+<li>異常類型。</li>
+<li>對應 KCP。</li>
+<li>對應主文件章節。</li>
+<li>來源系統。</li>
+<li>來源表單或附件。</li>
+<li>相關日期。</li>
+<li>相關人員。</li>
+<li>建議補查文件。</li>
+<li>稽核人員結論。</li>
+</ul>
+<h3>11.2 證據鏈呈現格式</h3>
+<div class="table-wrap"><table><thead><tr><th>欄位</th><th>說明</th></tr></thead><tbody><tr><td>Finding_Candidate_ID</td><td>CA 例外清單編號</td></tr><tr><td>Related_KCP</td><td>對應主文件 KCP</td></tr><tr><td>Exception_Type</td><td>異常類型</td></tr><tr><td>Data_Source</td><td>ERP / Workflow / DMS / Bank / Manual</td></tr><tr><td>Evidence_Link</td><td>文件或系統連結</td></tr><tr><td>Timeline_Summary</td><td>時序摘要</td></tr><tr><td>Risk_Description</td><td>風險說明</td></tr><tr><td>Auditor_Action</td><td>稽核建議動作</td></tr><tr><td>Auditor_Conclusion</td><td>稽核人員判斷結論</td></tr></tbody></table></div>
+<h2>12. 導入優先順序</h2>
+<p>建議先做小範圍可落地測試，不一次展開全循環。</p>
+<div class="table-wrap"><table><thead><tr><th>優先順序</th><th>模組</th><th>理由</th></tr></thead><tbody><tr><td>1</td><td>SC-02 工程估驗計價與營收認列</td><td>財報重大性高，資料鏈清楚</td></tr><tr><td>2</td><td>SC-04 請款與發票管理</td><td>可直接比對估驗、請款、發票與 AR</td></tr><tr><td>3</td><td>SC-06 應收帳款與保留款管理</td><td>工程承攬業特色明顯</td></tr><tr><td>4</td><td>SC-03 契約變更</td><td>先做後補風險高</td></tr><tr><td>5</td><td>SC-08 異常、逾期與爭議</td><td>適合建立管理監督與缺失追蹤</td></tr></tbody></table></div>
+<h2>13. 稽核主管校閱待確認事項</h2>
+<p>本文件尚待公司稽核主管與相關權責單位校閱。至少需確認：</p>
+<ul>
+<li>現行 ERP 是否具備必要 Project_ID / Contract_ID / Workflow_Ref_ID。</li>
+<li>Workflow 是否可提供核准日期、核准人、退回與補件紀錄。</li>
+<li>DMS 是否可提供附件版本、上傳日與附件識別。</li>
+<li>RBAC 是否可匯出角色、權限與使用者清單。</li>
+<li>高風險欄位是否已有異動 Log。</li>
+<li>SoD 衝突清單是否能由資訊單位定期提供。</li>
+<li>CA 例外清單應由誰覆核與結案。</li>
+<li>例外清單應如何與現行內稽底稿銜接。</li>
+</ul>
+<h2>14. 結語</h2>
+<p>本文件的價值，是讓主文件中的治理要求可以被資料、系統與稽核測試支持。</p>
+<p>主文件回答：「企業應如何治理？」</p>
+<p>CA 附加版回答：「系統與資料能否證明治理真的被執行？」</p>
+<p>下一階段應先完成 Computer Audit 的最小可行測試，再決定是否納入正式內稽作業或例外追蹤機制。</p>
+    
+<section class="doc-info-panel" id="document-info">
+<h2>文件資訊</h2>
+<ul>
+<li>文件狀態：個人工作稿 / v0.2 Draft / 稽核主管校閱版</li>
+<li>文件定位：Computer Audit 附加深度版</li>
+<li>對應主文件：傳統治理主文件</li>
+<li>主要讀者：公司稽核主管、電腦稽核、內部稽核、資訊、ERP Owner、Workflow Owner</li>
+<li>文件邊界：不是另一套制度，不是對外服務提案，不是全自動稽核規格</li>
+</ul>
+</section>
+</article>
+    <footer>個人工作稿，供內部治理討論與電腦稽核規劃使用。Markdown 便於版本控管，HTML 便於閱讀與展示。</footer>
+  </main>
+</body>
+</html>
