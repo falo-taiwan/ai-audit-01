@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TAAT 夥伴 AI 運用學習指南</title>
+  <meta name="description" content="以工程承攬業銷售與收款循環 POC 為例，協助 TAAT 夥伴用 SOP、內控、Computer Audit 與 Workflow 語言理解 AI Governance。">
+  <style>
+    :root {
+      --ink: #18304a;
+      --muted: #637286;
+      --paper: #fbfaf6;
+      --panel: #ffffff;
+      --soft-blue: #e8f1fb;
+      --soft-green: #e8f4ee;
+      --soft-amber: #fff2da;
+      --blue: #2464a8;
+      --green: #2f7c5b;
+      --amber: #bd751c;
+      --red: #a94335;
+      --line: rgba(24, 48, 74, 0.15);
+      --shadow: 0 18px 46px rgba(27, 54, 82, 0.12);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.75;
+      background: var(--paper);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 22px;
+      align-items: stretch;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 0.88rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 840px;
+      font-size: 4.1rem;
+      line-height: 1.08;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .subtitle {
+      margin: 16px 0 0;
+      max-width: 760px;
+      color: #34495f;
+      font-size: 1.24rem;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .subtitle span {
+      display: block;
+    }
+
+    .hero-card {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--soft-green);
+    }
+
+    .hero-card strong {
+      color: var(--green);
+      font-size: 1.06rem;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: #42546a;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .hero-card p span {
+      display: block;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .meta-item {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .meta-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-top: 2px;
+      color: var(--ink);
+      font-size: 0.98rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .nav a {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 0.88rem;
+    }
+
+    main {
+      margin-top: 22px;
+    }
+
+    section {
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      color: #14324e;
+      font-size: 2rem;
+      line-height: 1.22;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    h3 {
+      margin: 22px 0 8px;
+      color: #173d62;
+      font-size: 1.16rem;
+    }
+
+    p {
+      margin: 0.85rem 0;
+    }
+
+    .lead {
+      max-width: 860px;
+      color: #34495f;
+      font-size: 1.08rem;
+    }
+
+    .plain-quote {
+      margin: 18px 0;
+      padding: 14px 16px;
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      background: var(--soft-amber);
+      color: #3f3324;
+      font-weight: 800;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .note {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fcfdff;
+    }
+
+    .note.green {
+      background: var(--soft-green);
+    }
+
+    .note.blue {
+      background: var(--soft-blue);
+    }
+
+    .note.amber {
+      background: var(--soft-amber);
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 0.3rem 0;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      margin: 16px 0 4px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 0.78rem 0.86rem;
+      border-bottom: 1px solid rgba(24, 48, 74, 0.12);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #143d68;
+      background: var(--soft-blue);
+      font-weight: 900;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .highlight-row td {
+      background: #ffe9f0;
+      border-top: 2px solid #e88aa5;
+      border-bottom: 2px solid #e88aa5;
+    }
+
+    .highlight-row td:first-child {
+      border-left: 2px solid #e88aa5;
+      font-weight: 900;
+    }
+
+    .highlight-row td:last-child {
+      border-right: 2px solid #e88aa5;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .step-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .step-card strong {
+      display: block;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .svg-panel {
+      margin: 18px 0;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      overflow-x: auto;
+    }
+
+    .svg-panel svg {
+      display: block;
+      width: 100%;
+      min-width: 860px;
+      height: auto;
+    }
+
+    .diagram-title {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 880px) {
+      .hero,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 1.72rem;
+      }
+
+      .meta-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(1120px, calc(100% - 18px));
+        padding-top: 10px;
+      }
+
+      .hero,
+      section {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 1.92rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+
+      .subtitle {
+        font-size: 1.02rem;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav a {
+        width: 100%;
+        text-align: center;
+      }
+
+      table {
+        min-width: 680px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">TAAT Partner Learning Guide</p>
+        <h1><span>TAAT 夥伴 AI</span><span>運用學習指南</span></h1>
+        <p class="subtitle"><span>以「工程承攬業銷售與收款循環」POC 為例，</span><span>用 SOP、內控、ERP、Workflow</span><span>與 Computer Audit 的熟悉語言，</span><span>理解 AI 在治理工作裡該怎麼用。</span></p>
+      </div>
+      <aside class="hero-card" aria-label="文件定位">
+        <strong>這不是 AI 技術文件</strong>
+        <p><span>這是一份給 Walker、John</span><span>與 TAAT 夥伴看的 AI 學習入口。</span><span>主角不是 AI，主角是治理。</span></p>
+      </aside>
+    </header>
+
+    <div class="meta-grid" aria-label="文件資訊">
+      <div class="meta-item">
+        <span>文件狀態</span>
+        <strong>POC Learning Guide / Draft</strong>
+      </div>
+      <div class="meta-item">
+        <span>核心案例</span>
+        <strong>工程承攬業銷售與收款循環</strong>
+      </div>
+      <div class="meta-item">
+        <span>主要語言</span>
+        <strong>SOP / 內控 / Computer Audit</strong>
+      </div>
+      <div class="meta-item">
+        <span>使用方式</span>
+        <strong>教學、討論、夥伴 onboarding</strong>
+      </div>
+    </div>
+
+    <nav class="nav" aria-label="頁面導覽">
+      <a href="#purpose">這份文件</a>
+      <a href="#audit-language">稽核語言</a>
+      <a href="#poc-flow">POC 主軸</a>
+      <a href="#route">導入順序</a>
+      <a href="#ai-use">AI 怎麼用</a>
+      <a href="#working-method">治理型工作法</a>
+      <a href="#special-case">違建 Special Case</a>
+      <a href="#rules">注意事項</a>
+    </nav>
+
+    <main>
+      <section id="purpose">
+        <h2>1. 這份文件是做什麼的</h2>
+        <p class="lead">這不是 POC 技術文件，也不是要教大家寫程式、背 AI 名詞、推銷 AI 工具，或立刻跳到 AI Audit。</p>
+        <p>這份文件是一個學習入口：用目前的 POC，讓 TAAT 夥伴看懂 AI 在治理工作裡可以怎麼幫忙，以及哪些判斷仍然必須由人負責。</p>
+        <div class="plain-quote">AI 在這個 POC 裡不是主角，治理才是主角。AI 是幫大家把資料整理得更快、把盲點看得更清楚的助手。</div>
+        <div class="steps">
+          <div class="step-card">
+            <strong>先看流程</strong>
+            <span>合約、變更、估驗、請款、收款與異常追蹤怎麼串起來。</span>
+          </div>
+          <div class="step-card">
+            <strong>再看證據</strong>
+            <span>表單、附件、Workflow、ERP Log 與 Audit Trail 是否完整。</span>
+          </div>
+          <div class="step-card">
+            <strong>最後用 AI</strong>
+            <span>讓 AI 協助整理、比對、提示與產出初稿，而不是替人下結論。</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="audit-language">
+        <h2>2. 從熟悉的稽核語言開始</h2>
+        <p>很多人一聽到 AI，就會以為要先學模型、Prompt、Agent、Runtime。在這個 POC 裡，不需要一開始就這樣想。</p>
+        <p>對稽核、財會、ERP、營運背景的人來說，比較好的切入點是：先把 AI 當成一位很會整理資料、很會比對文件、很會產出初稿的工作助理。</p>
+        <div class="two-col">
+          <div class="note blue">
+            <h3>AI 先協助什麼</h3>
+            <ul>
+              <li>整理資料。</li>
+              <li>比對文件。</li>
+              <li>找出異常。</li>
+              <li>建立 Checklist。</li>
+              <li>產生 SOP 初稿。</li>
+              <li>協助 Computer Audit 分析。</li>
+              <li>協助彙整稽核發現。</li>
+            </ul>
+          </div>
+          <div class="note amber">
+            <h3>人仍然負責什麼</h3>
+            <ul>
+              <li>控制是否有效。</li>
+              <li>認列與收款是否合理。</li>
+              <li>現場 reality 是否可信。</li>
+              <li>法規與契約如何判斷。</li>
+              <li>治理邊界與方法論方向。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="poc-flow">
+        <h2>3. 本 POC 的學習主軸</h2>
+        <p>本 POC 以「工程承攬業銷售與收款循環」作為案例。它不是單純開發票或收款，而是一條長治理鏈，每一個節點都會產生文件、簽核、系統資料與責任歸屬。</p>
+
+        <div class="svg-panel" role="img" aria-label="工程承攬業銷售與收款循環 POC 流程圖">
+          <p class="diagram-title">POC 流程圖：從合約到異常追蹤</p>
+          <svg viewBox="0 0 1120 280" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#2464a8"/>
+              </marker>
+              <filter id="soft-shadow" x="-10%" y="-20%" width="120%" height="140%">
+                <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1b3652" flood-opacity="0.16"/>
+              </filter>
+            </defs>
+            <rect x="18" y="20" width="1084" height="240" rx="8" fill="#fbfaf6" stroke="#d7dedf"/>
+            <text x="42" y="56" fill="#18304a" font-size="21" font-weight="800">工程承攬業銷售與收款循環</text>
+            <text x="42" y="82" fill="#637286" font-size="14">AI 要協助的是整理這條治理鏈上的文件、流程、系統紀錄與異常。</text>
+
+            <g filter="url(#soft-shadow)">
+              <rect x="46" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="181" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="316" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="451" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="586" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="721" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="856" y="126" width="108" height="70" rx="8" fill="#ffffff" stroke="#8eb1d6"/>
+              <rect x="991" y="126" width="82" height="70" rx="8" fill="#fff2da" stroke="#d49951"/>
+            </g>
+
+            <g fill="#18304a" font-size="20" font-weight="800" text-anchor="middle">
+              <text x="100" y="166">合約</text>
+              <text x="235" y="166">變更</text>
+              <text x="370" y="166">估驗</text>
+              <text x="505" y="166">請款</text>
+              <text x="640" y="166">收款</text>
+              <text x="775" y="166">保留款</text>
+              <text x="910" y="166">驗收</text>
+              <text x="1032" y="156">異常</text>
+              <text x="1032" y="180">追蹤</text>
+            </g>
+
+            <g stroke="#2464a8" stroke-width="3" marker-end="url(#arrow-blue)">
+              <line x1="156" y1="161" x2="176" y2="161"/>
+              <line x1="291" y1="161" x2="311" y2="161"/>
+              <line x1="426" y1="161" x2="446" y2="161"/>
+              <line x1="561" y1="161" x2="581" y2="161"/>
+              <line x1="696" y1="161" x2="716" y2="161"/>
+              <line x1="831" y1="161" x2="851" y2="161"/>
+              <line x1="966" y1="161" x2="986" y2="161"/>
+            </g>
+
+            <g fill="#637286" font-size="13" text-anchor="middle">
+              <text x="100" y="220">承攬範圍</text>
+              <text x="235" y="220">追加減</text>
+              <text x="370" y="220">進度計價</text>
+              <text x="505" y="220">發票與 AR</text>
+              <text x="640" y="220">沖帳</text>
+              <text x="775" y="220">扣留釋放</text>
+              <text x="910" y="220">結案條件</text>
+              <text x="1032" y="220">追責與改善</text>
+            </g>
+          </svg>
+        </div>
+
+        <p>這就是為什麼本 POC 很適合教 AI Governance：AI 不是憑空回答問題，而是幫我們把一條治理鏈上的文件、流程、系統紀錄與異常整理出來。</p>
+      </section>
+
+      <section id="route">
+        <h2>4. 為什麼要先 SOP，再 Computer Audit，再 AI</h2>
+        <p>TAAT 目前的路線不是一開始就做 AI Audit，也不是直接做全自動 Agent。比較穩的方式，是先把治理基礎鋪好。</p>
+
+        <div class="svg-panel" role="img" aria-label="AI 導入階梯圖">
+          <p class="diagram-title">AI 導入階梯圖：先治理，再工具，最後才自動化</p>
+          <svg viewBox="0 0 1120 420" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7c5b"/>
+              </marker>
+            </defs>
+            <rect x="18" y="20" width="1084" height="380" rx="8" fill="#ffffff" stroke="#d7dedf"/>
+            <text x="48" y="58" fill="#18304a" font-size="22" font-weight="800">循序漸進路線</text>
+            <text x="48" y="84" fill="#637286" font-size="14">沒有清楚 SOP，AI 只能猜；沒有 Audit Trail，AI 不能治理。</text>
+
+            <g>
+              <rect x="62" y="304" width="156" height="54" rx="8" fill="#e8f4ee" stroke="#80b69c"/>
+              <rect x="238" y="256" width="156" height="102" rx="8" fill="#e8f4ee" stroke="#80b69c"/>
+              <rect x="414" y="208" width="156" height="150" rx="8" fill="#e8f1fb" stroke="#8eb1d6"/>
+              <rect x="590" y="160" width="156" height="198" rx="8" fill="#e8f1fb" stroke="#8eb1d6"/>
+              <rect x="766" y="112" width="156" height="246" rx="8" fill="#fff2da" stroke="#d49951"/>
+              <rect x="942" y="64" width="116" height="294" rx="8" fill="#f8e8e5" stroke="#c98278"/>
+            </g>
+
+            <g fill="#18304a" font-size="18" font-weight="800" text-anchor="middle">
+              <text x="140" y="333">內控 / SOP</text>
+              <text x="316" y="309">Computer</text>
+              <text x="316" y="333">Audit</text>
+              <text x="492" y="284">ERP /</text>
+              <text x="492" y="308">Workflow</text>
+              <text x="668" y="236">Digital</text>
+              <text x="668" y="260">Auditability</text>
+              <text x="844" y="188">AI-assisted</text>
+              <text x="844" y="212">Governance</text>
+              <text x="1000" y="136">未來</text>
+              <text x="1000" y="160">AI Audit</text>
+            </g>
+
+            <g fill="#637286" font-size="13" text-anchor="middle">
+              <text x="140" y="374">先有穩定流程</text>
+              <text x="316" y="374">再有系統證據</text>
+              <text x="492" y="374">再串資料來源</text>
+              <text x="668" y="374">再談可追蹤</text>
+              <text x="844" y="374">再讓 AI 協助</text>
+              <text x="1000" y="374">最後才深化</text>
+            </g>
+
+            <path d="M 218 276 C 250 238, 288 230, 330 216 S 418 178, 456 154 S 553 115, 616 104 S 752 78, 940 48" fill="none" stroke="#2f7c5b" stroke-width="4" marker-end="url(#arrow-green)"/>
+          </svg>
+        </div>
+
+        <div class="two-col">
+          <div class="note green">
+            <h3>為什麼先 SOP</h3>
+            <p>沒有清楚 SOP，就沒有穩定流程。流程不穩，AI 再會整理，也只是把混亂整理得比較漂亮。</p>
+          </div>
+          <div class="note blue">
+            <h3>為什麼先 Computer Audit</h3>
+            <p>沒有 Computer Audit，就沒有系統證據。沒有證據，AI 只能提供猜測，不能支撐治理。</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="ai-use">
+        <h2>5. AI 在這個 POC 裡怎麼用</h2>
+        <p>AI 在本 POC 裡的角色，可以用下表理解。它負責協助整理、比對、提示與產出初稿，人仍然負責判斷、確認與承擔責任。</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>工作</th>
+                <th>傳統做法</th>
+                <th>AI 協助方式</th>
+                <th>人類仍要判斷什麼</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>產生 SOP 初稿</td>
+                <td>由稽核或顧問從空白文件開始寫。</td>
+                <td>根據案例、流程與研究資料產出第一版骨架。</td>
+                <td>SOP 是否符合企業 reality、權責是否合理、控制點是否可落地。</td>
+              </tr>
+              <tr class="highlight-row">
+                <td>同一 Prompt 多 AI 研究與 HITL 收斂</td>
+                <td>人工找資料、逐份閱讀、複製重點、整理差異。</td>
+                <td>用同一組 Prompt 讓多個 AI 研究同一題目，取得不同視角與資料線索。</td>
+                <td>由 HITL 逐段 review、比對來源、排除不適合內容，收斂成 TAAT 可用版本。</td>
+              </tr>
+              <tr>
+                <td>整理 KCP</td>
+                <td>從流程中人工標記控制點。</td>
+                <td>協助把風險、控制目的、責任人、佐證文件整理成表格。</td>
+                <td>KCP 是否真的關鍵，是否能被抽核與維護。</td>
+              </tr>
+              <tr>
+                <td>產生 Checklist</td>
+                <td>稽核人員依經驗逐項列出。</td>
+                <td>協助依流程節點產生檢查清單初稿。</td>
+                <td>哪些檢查項目必要，哪些太細或不切實際。</td>
+              </tr>
+              <tr>
+                <td>協助 Red Flags</td>
+                <td>靠經驗整理常見異常。</td>
+                <td>協助列出時序、文件、Workflow、ERP 與現場 reality 的異常樣態。</td>
+                <td>Red Flag 是否真的代表風險，是否需要進一步查證。</td>
+              </tr>
+              <tr class="highlight-row">
+                <td>協助違建 special case 專案稽核</td>
+                <td>依個案資料人工建立稽核問題。</td>
+                <td>協助整理合約、圖說、變更、估驗、請款與證據鏈。</td>
+                <td>是否涉及法規問題、契約責任與專業判斷。</td>
+              </tr>
+              <tr>
+                <td>協助產出 HTML 教學頁</td>
+                <td>手工排版或轉檔。</td>
+                <td>將 Markdown 轉成人類友善的 single-file HTML。</td>
+                <td>內容是否適合分享、教學與對外溝通。</td>
+              </tr>
+              <tr>
+                <td>協助整理 Computer Audit 測試想法</td>
+                <td>由電腦稽核人員設計查核規則。</td>
+                <td>協助把測試點對應到 KCP、ERP 欄位、Workflow 與 Audit Trail。</td>
+                <td>測試規則是否可取得資料、是否會誤判、是否可解釋。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="working-method">
+        <h2>6. 這不是一次生成，而是治理型工作法</h2>
+        <p>高階 AI 的確可以一次產出很完整的初版。但完整不等於正確，也不等於可治理。TAAT 的工作法是先產生可以討論的版本，再用治理語言逐段 Review。</p>
+
+        <div class="svg-panel" role="img" aria-label="高階模型與一般付費模型作業法比較">
+          <p class="diagram-title">兩條 AI 作業路線：完整初版 vs 分模組整合</p>
+          <svg viewBox="0 0 1120 430" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#bd751c"/>
+              </marker>
+              <marker id="arrow-blue-2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#2464a8"/>
+              </marker>
+            </defs>
+            <rect x="18" y="20" width="1084" height="390" rx="8" fill="#ffffff" stroke="#d7dedf"/>
+            <text x="48" y="58" fill="#18304a" font-size="22" font-weight="800">治理型工作法，不是一次生成就結束</text>
+
+            <rect x="48" y="92" width="488" height="270" rx="8" fill="#fff8ec" stroke="#d49951"/>
+            <rect x="584" y="92" width="488" height="270" rx="8" fill="#eef5fc" stroke="#8eb1d6"/>
+
+            <text x="292" y="128" fill="#8a5415" font-size="20" font-weight="900" text-anchor="middle">高階模型路線</text>
+            <text x="828" y="128" fill="#174e80" font-size="20" font-weight="900" text-anchor="middle">一般付費模型路線</text>
+
+            <g fill="#ffffff" stroke="#d49951" stroke-width="1.3">
+              <rect x="76" y="168" width="110" height="58" rx="8"/>
+              <rect x="214" y="168" width="110" height="58" rx="8"/>
+              <rect x="352" y="168" width="134" height="58" rx="8"/>
+              <rect x="169" y="274" width="246" height="58" rx="8"/>
+            </g>
+            <g fill="#18304a" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="131" y="203">完整初版</text>
+              <text x="269" y="194">模組</text>
+              <text x="269" y="214">Review</text>
+              <text x="419" y="194">SOP / KCP</text>
+              <text x="419" y="214">補強</text>
+              <text x="292" y="300">可展示版本</text>
+            </g>
+            <path d="M 186 197 L 210 197" stroke="#bd751c" stroke-width="3" marker-end="url(#arrow-amber)"/>
+            <path d="M 324 197 L 348 197" stroke="#bd751c" stroke-width="3" marker-end="url(#arrow-amber)"/>
+            <path d="M 419 228 C 418 258, 386 275, 419 303" stroke="#bd751c" stroke-width="3" fill="none" marker-end="url(#arrow-amber)"/>
+
+            <g fill="#ffffff" stroke="#8eb1d6" stroke-width="1.3">
+              <rect x="612" y="158" width="106" height="58" rx="8"/>
+              <rect x="746" y="158" width="106" height="58" rx="8"/>
+              <rect x="880" y="158" width="146" height="58" rx="8"/>
+              <rect x="746" y="272" width="180" height="58" rx="8"/>
+            </g>
+            <g fill="#18304a" font-size="16" font-weight="800" text-anchor="middle">
+              <text x="665" y="184">分模組</text>
+              <text x="665" y="204">產出</text>
+              <text x="799" y="184">定期</text>
+              <text x="799" y="204">整合</text>
+              <text x="953" y="184">拆回修正</text>
+              <text x="953" y="204">與補件</text>
+              <text x="836" y="298">再整合</text>
+            </g>
+            <path d="M 718 187 L 742 187" stroke="#2464a8" stroke-width="3" marker-end="url(#arrow-blue-2)"/>
+            <path d="M 852 187 L 876 187" stroke="#2464a8" stroke-width="3" marker-end="url(#arrow-blue-2)"/>
+            <path d="M 953 218 C 952 250, 920 272, 926 301" stroke="#2464a8" stroke-width="3" fill="none" marker-end="url(#arrow-blue-2)"/>
+            <path d="M 746 301 C 680 288, 664 244, 665 220" stroke="#2464a8" stroke-width="2.4" fill="none" stroke-dasharray="7 7" marker-end="url(#arrow-blue-2)"/>
+
+            <text x="292" y="382" fill="#637286" font-size="14" text-anchor="middle">適合先搭全貌，再逐段修正。</text>
+            <text x="828" y="382" fill="#637286" font-size="14" text-anchor="middle">適合小段產出，定期收斂。</text>
+          </svg>
+        </div>
+
+        <div class="plain-quote">共同原則都一樣：AI 產物一定要 Review，一定要版本化，一定要回到治理目的。</div>
+      </section>
+
+      <section id="special-case">
+        <h2>7. Walker 很容易理解的切入點：違建 Special Case</h2>
+        <p>「違建」這個 Special Case 很適合做學習切入點。但要先講清楚：這不是要 AI 判定違法，也不是讓 AI 取代法務、建築師、技師或主管機關。</p>
+        <p>這個案例的真正用途，是示範專案稽核怎麼看一個工程案。</p>
+        <div class="two-col">
+          <div class="note blue">
+            <h3>專案稽核要看什麼</h3>
+            <ul>
+              <li>現場 reality 是什麼？</li>
+              <li>合約寫的是什麼？</li>
+              <li>圖說與核准文件是什麼版本？</li>
+              <li>變更是否先核准再施工？</li>
+              <li>估驗是否對應核准範圍？</li>
+              <li>Workflow 是否只有形式完成？</li>
+              <li>證據鏈是否能串起來？</li>
+            </ul>
+          </div>
+          <div class="note amber">
+            <h3>AI 在這裡做什麼</h3>
+            <ul>
+              <li>協助整理資料。</li>
+              <li>協助排時間軸。</li>
+              <li>協助找文件缺口。</li>
+              <li>協助列 Red Flags。</li>
+              <li>協助產出稽核問題清單。</li>
+            </ul>
+          </div>
+        </div>
+        <div class="plain-quote">AI 幫稽核人員把「哪裡怪怪的」整理出來，但「到底代表什麼」仍由人判斷。</div>
+      </section>
+
+      <section id="rules">
+        <h2>8. AI 使用注意事項</h2>
+        <div class="two-col">
+          <div class="note green">
+            <h3>基本原則</h3>
+            <ul>
+              <li>AI 可以協助，不等於可以直接相信。</li>
+              <li>重要結論要交叉驗證。</li>
+              <li>法規與制度要查來源。</li>
+              <li>稽核判斷仍由人負責。</li>
+              <li>AI 產物要留下版本。</li>
+              <li>Prompt 也是治理資產。</li>
+              <li>Markdown 給 AI 看，HTML 給人看。</li>
+            </ul>
+          </div>
+          <div class="note amber">
+            <h3>特別小心</h3>
+            <ul>
+              <li>法規條文。</li>
+              <li>會計處理。</li>
+              <li>合約責任。</li>
+              <li>違建或合法性判斷。</li>
+              <li>稽核缺失結論。</li>
+              <li>企業正式制度文字。</li>
+              <li>對外承諾或對外報告。</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="closing">
+        <h2>9. 結語</h2>
+        <p class="lead">TAAT 不是在學 AI 工具。TAAT 是在建立 AI 時代的治理工作方法。</p>
+        <p>這個 POC 的價值，不是證明 AI 很厲害，而是讓大家看到 SOP 可以被整理得更清楚，Computer Audit 可以更早接上流程，ERP / Workflow 可以變成治理證據，異常可以更快被整理與討論，人類判斷也可以被更好的資料支撐。</p>
+        <div class="plain-quote">AI 不是治理的答案。AI 是讓治理工作更清楚、更可追蹤、更能被教學與傳承的工具。</div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      TAAT x FALO Governance Runtime · POC Learning Guide · Markdown for AI, HTML for humans
+    </footer>
+  </div>
+</body>
+</html>
